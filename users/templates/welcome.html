@@ -1,39 +1,62 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">      
-
-<div class="container">
-
-    {% block contenido %}
-
-    <h2>Bienvenido a la Peluquería</h2>
-
-    <br />
-    <hr/>
-
-
-    <p>
-        Si eres un Cliente de la Peluquería puedes iniciar sesión haciendo click en el
-        Siguiente link:
-    </p>
-
-    <br />
-
-    <a href="/loginCliente"><input type="button" value="Iniciar sesión" class="btn btn-info"> </a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Rumps</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
     
+    
+</head>    
+<body>
+    <header class="titulo">
+        <div class="Barra_contenedora">
+            <section class="barra_inferior">
+                <h1>Bienvenido a la Peluquería</h1>
+            </section>
 
-    <hr />
+        </div>
 
-        <p>
-        Si no eres cliente y quieres acceder a la peliquería, puedes registrarte haciendo click en 
-        siguiente link:
-        </p>
-
-        <br> 
-
-        <a href="/registro"><input type="button" value="Registro"class="btn btn-info"></a>
-
-    <hr />
+    </header>
 
 
-    {% endblock %}
-</div>
-       
+    <main>
+        <section class="Barra_contenedor seccion">
+
+           
+            <p>
+                Si eres un Cliente de la Peluquería puedes iniciar sesión haciendo click en el
+                Siguiente link:
+            </p>
+            
+            
+            
+
+            <a href="/registro"><input type="button" value="Registro"class="btn btn-info"></a>
+
+
+            <p>
+                Si no eres cliente y quieres acceder a la peliquería, puedes registrarte haciendo click en 
+                siguiente link:
+            </p>
+
+            <a href="/registro"><input type="button" value="Registro"class="btn btn-info"></a>
+
+
+
+
+
+            
+        </section>
+
+    </main>
+
+
+
+
+
+
+
+</body>

@@ -17,8 +17,14 @@ html{
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.5rem;
+    
+    
+
 }
 
+*{
+    box-sizing: border-box;
+}
 
 
 
@@ -143,4 +149,50 @@ main{
 .pie_pagina {
     background-color: blanchedalmond;
     
+}
+
+/* ESTRUCTURA REGISTRO DE USUARIO */
+
+.Formulario{
+
+    box-sizing: border-box;
+    text-align: center;
+    background-color: white;
+    margin-top: 150px;
+    padding: 3px;
+
+
+    
+    
+
+}
+
+h2 {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+
+}
+
+.Contenedor{
+    width: 100%;
+    padding: 15px;
+}
+
+.button{
+    border: none;
+    color: white;
+    width: 10%;
+    font-size: 25px;
+    background: black;
+}
+
+@media(min-width:800){
+    .Formulario{
+        margin: auto;
+        width: 500px;
+        margin-top: 150px;
+        border-radius: 2%;
+    }
+
 }
