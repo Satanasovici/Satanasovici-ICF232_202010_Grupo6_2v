@@ -10,6 +10,8 @@ from .models import Peluquero_info
 def index_prueba(request):
         return render(request, "index_prueba.html")
 
+def Cortes(request):
+        return render(request, "pagina_cortes.html")
 
 
 def catalogo(request):

@@ -4,19 +4,49 @@
 
 img{
     max-width: 100%;
+
+
 }
+
+.boton{
+    background-color: gray;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+.Barra_contenedor{
+    max-width: 170rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
 
 /* Fuente de la pagina */
 
 html{
     font-size: 62.5%;
     background-color: rgb(131, 131, 131);
+    background: url(../imagenes/Fondo.jpg);
     background-position: center center;
 }
 
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.5rem;
+}
+
+
+.peluqueria a{
+    text-decoration: none;
 }
 
 
@@ -29,11 +59,6 @@ body{
     background-position: center center;
 }
 
-.Barra_contenedor{
-    max-width: 170rem;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .barra_superior{
     padding-top: 0.8rem;
@@ -89,16 +114,6 @@ body{
     color: wheat;
 }
 
-/*
-main{
-    
-    background: url(../imagenes/Fondo.jpg);
-    margin-top: -1rem;
-    margin-bottom: 5rem;
-    background-position: center center;
-}
-
-*/
 
 /* ------------------------------------------*/
 
@@ -106,34 +121,72 @@ main{
 
 
 .encabezado-servicios{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    color: white;
     font-weight: 300;
     text-align: center;
+    text-transform: uppercase;
+    font-family: cursive;
 }
 
 .seccion {
     margin-top: 1rem;
-    margin-bottom: 5rem;
+    margin-bottom: 15rem;
     background-position: center center;
 }
 
 .catalogo{
-    display: flex;
+    /*display: flex;*/
+    align-items: flex-start;
     justify-content: space-between;
+
 }
+
+.catalogo_superior{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 4rem;
+   
+}
+
+.catalogo_inferior{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 4rem;
+}
+
 
 .servicios h3 {
     text-transform: uppercase;
+    color: rgb(175, 175, 175);
 
 }
 
+
 .servicios{
-    flex-basis: calc(25% - 12rem);
+    
+    flex-basis: calc(25% - 10rem);
     text-align: center;
     border-style: solid;
     border-color: blanchedalmond;
-    background-color: rgb(192, 158, 96);
+    background-color: black;
     border-width: 3px;
     
+}
+
+
+
+
+
+.servicios a:hover{
+    color: wheat;
+}
+
+
+
+.contenido-servicio{
+    padding: 2rem;
 }
 
 /* ------------------------------------------*/
@@ -142,5 +195,13 @@ main{
 
 .pie_pagina {
     background-color: blanchedalmond;
-    
+    background: url(../imagenes/Imagen_footer.jpg);
+    background-position: center center;
+    background-size: cover;
+    -webkit-filter: brightness(50%);
+    filter: brightness(50%);
+    border-style: solid;
+    border-color: blanchedalmond;
+    border-width: 3px;
+
 }
