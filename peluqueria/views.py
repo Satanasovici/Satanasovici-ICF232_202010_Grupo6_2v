@@ -13,6 +13,25 @@ def index_prueba(request):
 def Cortes(request):
         return render(request, "pagina_cortes.html")
 
+def contacto(request):
+        return render(request, "contacto_prueba.html")
+
+
+def profesionales(request):
+    horario = Peluquero_info.objects.all()
+    data = {
+         'peluquero':horario
+    }
+    return render(request, "pagina_profesionales.html", data)
+
+
+
+
+
+
+
+
+
 
 def catalogo(request):
     if request.user.is_authenticated:

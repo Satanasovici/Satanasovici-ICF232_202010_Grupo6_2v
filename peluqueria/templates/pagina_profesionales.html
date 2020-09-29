@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cortes</title>
+    <title>Peluquería Rumps</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
 
@@ -44,43 +44,51 @@
     <main>
         <section class="Barra_contenedor seccion">
 
-            <h2 class="encabezado-servicios">Cortes de cabello</h2>
+            <h2 class="encabezado-servicios">Información peluquería</h2>
                 <div class="catalogo">
                     <div class="catalogo_superior">
-                        <div class="servicios">
-                            <h3>Cortes de cabello niño</h3>
-                            <img src="{% static 'imagenes/' %}"  alt="My image">
-                            <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>
-                            </div>
-                        </div>
-                        <div class="servicios">
-                            <h3>Cortes de cabello niña</h3>
-                            <img src="{% static 'imagenes/' %}" alt="My image">
-                            <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>
-                            </div>
-                        </div>
-                        <div class="servicios">
-                            <h3>Cortes de cabello Varon</h3>
-                            <img src="{% static 'imagenes/' %}"  alt="My image">
-                            <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>
-                            </div>
-                        </div>
-                     </div>
-                     <div class="catalogo_inferior">
-                        <div class="servicios">
-                            <h3>Cortes de cabello Dama</h3> 
-                            <img src="{% static 'imagenes/' %}"  alt="My image"> 
-                            <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>   
-                            </div>         
-                        </div>
+                        <div class="informacion_contacto">
+                            
+                            <table class="table">
+                                <tr>
+                                    <th>    Nombre  </th>
+                                    <th>Apellido</th>
+                                    <th>Rubro</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo electronico</th>
+                                    <th>Horario</th>       
+                                </tr>
+                            
+                                {% for p in peluquero %}
+                            
+                                <tr>
+                                    <td>{{ p.nombre }}</td>
+                                    <td>{{ p.apellido }}</td>
+                                    <td>{{ p.rubro }}</td>
+                                    <td>{{ p.telefono }}</td>
+                                    <td>{{ p.email }}</td>
+                                    <td>{{ p.horario }}</td>
+                                    
+                                </tr>
+                                
+                            
+                            
+                                {% endfor %}
+                            
+                            
+                            </table>
+                            
+                            <hr/>
+                            
+                            <a href="/prueba"><input type="button" value="volver" class="btn btn-info"></a>
 
-                     </div>
-            </div>
+
+                            </div>
+                        </div>
+                </div>
         </section>
+        
+        
 
     </main>
 
@@ -110,5 +118,4 @@
     </footer>
 
 </body>
-
 </html>

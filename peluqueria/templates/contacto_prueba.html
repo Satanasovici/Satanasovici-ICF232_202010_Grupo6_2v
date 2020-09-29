@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cortes</title>
+    <title>Peluquería Rumps</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
 
@@ -30,7 +30,7 @@
                         <a href="">Quiénes somos</a>
                         <a href="/Contacto">Contacto</a>
                         <a href="">Dirección</a>
-                        <a href="">Profesionales</a>
+                        <a href="/Profesionales">Profesionales</a>
                         <a href="">Todos los servicios</a>
                     </nav>
             </section>    
@@ -44,43 +44,37 @@
     <main>
         <section class="Barra_contenedor seccion">
 
-            <h2 class="encabezado-servicios">Cortes de cabello</h2>
+            <h2 class="encabezado-servicios">Información peluquería</h2>
                 <div class="catalogo">
                     <div class="catalogo_superior">
-                        <div class="servicios">
-                            <h3>Cortes de cabello niño</h3>
-                            <img src="{% static 'imagenes/' %}"  alt="My image">
-                            <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>
-                            </div>
-                        </div>
-                        <div class="servicios">
-                            <h3>Cortes de cabello niña</h3>
-                            <img src="{% static 'imagenes/' %}" alt="My image">
-                            <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>
-                            </div>
-                        </div>
-                        <div class="servicios">
-                            <h3>Cortes de cabello Varon</h3>
-                            <img src="{% static 'imagenes/' %}"  alt="My image">
-                            <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>
-                            </div>
-                        </div>
-                     </div>
-                     <div class="catalogo_inferior">
-                        <div class="servicios">
-                            <h3>Cortes de cabello Dama</h3> 
-                            <img src="{% static 'imagenes/' %}"  alt="My image"> 
-                            <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>   
-                            </div>         
-                        </div>
+ 
 
+                        <ul class="informacion_contacto">
+                            <li>Horarios Lunes - Viernes 10:00 AM - 18:00 PM Sabado y Domingo 12:00 PM - 20:00 PM</li>
+                            <br/>
+                            <li>Direccion: Avenida Los Corrales #1212 </li> 
+                            <br/>
+                            <li>Contacto fijo: 2 4444 4444</li>
+                            <br/>
+                            <li>Contacto Movil: +56 9 9999 9999 </li>
+                            <br/>
+                            <li>Email: peluqueria@gmail.com </li>
+                            <br/>
+                            <li>Whatsapp: +569 9999 9999 </li>
+                            <br/>
+                            <li>Instagram: @peluqueriaRumps </li>
+                            <br/>
+                            <li>Facebook: Peluquería_Rumps </li>
+                    
+                            <hr/>
+                    
+                            <a href="/prueba"><input type="button" value="volver" class="btn btn-info"></a>
+                        </ul>
                      </div>
-            </div>
+                </div>
         </section>
+        
+        
 
     </main>
 
@@ -110,5 +104,4 @@
     </footer>
 
 </body>
-
 </html>

@@ -205,3 +205,18 @@ body{
     border-width: 3px;
 
 }
+
+
+
+
+
+/********* Pagina Contacto ***********************/
+
+
+.informacion_contacto{
+    color: white;
+    padding: 4rem;
+    background-color: black;
+    border-style: solid;
+    border-color: white;
+}
