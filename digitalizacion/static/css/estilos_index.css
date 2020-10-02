@@ -26,6 +26,33 @@ img{
     margin-right: auto;
 }
 
+/*********************** Dimensiones y estructura de la pagina ***************************/
+
+.titulo{
+    background-color: black;
+    background-position: center center;
+}
+
+
+.barra_superior{
+    padding-top: 0.8rem;
+}
+
+
+/* ESTRUCTURA Del Footer */
+
+.pie_pagina {
+    background-color: blanchedalmond;
+    background: url(../imagenes/Imagen_footer.jpg);
+    background-position: center center;
+    background-size: cover;
+    -webkit-filter: brightness(50%);
+    filter: brightness(50%);
+    border-style: solid;
+    border-color: blanchedalmond;
+    border-width: 3px;
+
+}
 
 
 
@@ -52,17 +79,6 @@ body{
 
 
 
-/*********************** Dimensiones y estructura de la pagina ***************************/
-
-.titulo{
-    background-color: black;
-    background-position: center center;
-}
-
-
-.barra_superior{
-    padding-top: 0.8rem;
-}
 
 /*********************** AJUSTES DE LAS BARRAS DE NAVEGACION ****************************/
 
@@ -177,8 +193,6 @@ body{
 
 
 
-
-
 .servicios a:hover{
     color: wheat;
 }
@@ -191,20 +205,6 @@ body{
 
 /* ------------------------------------------*/
 
-/* ESTRUCTURA Del Footer */
-
-.pie_pagina {
-    background-color: blanchedalmond;
-    background: url(../imagenes/Imagen_footer.jpg);
-    background-position: center center;
-    background-size: cover;
-    -webkit-filter: brightness(50%);
-    filter: brightness(50%);
-    border-style: solid;
-    border-color: blanchedalmond;
-    border-width: 3px;
-
-}
 
 
 
@@ -219,4 +219,15 @@ body{
     background-color: black;
     border-style: solid;
     border-color: white;
+}
+
+.fila_profesionales{
+    padding-top: 2rem;
+}
+
+
+/************* PAGINA PROFESIONALES ****************/
+
+.filas_contacto{
+    padding-top: 2rem;
 }

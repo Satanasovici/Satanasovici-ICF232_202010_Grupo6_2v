@@ -92,6 +92,7 @@ def editProfile(request):
     else:
         form = EditProfileForm(instance=request.user)
         return render(request, "modificarDatos.html", {'form': form})
+
     
 def changePassword(request):
     if request.method == 'POST':
@@ -106,4 +107,35 @@ def changePassword(request):
         form = PasswordChangeForm(user=request.user)
         return render(request, "cambiarClave.html", {'form': form})
 
+
+
+
+
+
+
+#NUEVAS PAGINAS
+
+
+
+def login(request):
+    form = AuthenticationForm()
+    if request.method == "POST":
+        form = AuthenticationForm(data=request.POST)
+        # Si el formulario es válido...
+        if form.is_valid():
+            
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            
+            user = authenticate(username=username, password=password)
+
+            
+            if user is not None:
+                
+                do_login(request, user)
+               
+                return redirect('/prueba')
+   
+        # Si llegamos al final renderizamos el formulario
+    return render(request, "pagina_iniciar_sesion.html", {'form': form})
 

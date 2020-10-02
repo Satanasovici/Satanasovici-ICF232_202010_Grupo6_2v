@@ -38,6 +38,18 @@ urlpatterns = [
     path('password', views.changePassword),
     path('prueba', index_prueba),
     path('Cortes', Cortes),
+    #path('Tintes', tintes),
+    #path('Lavados', lavados),
+    #path('Alisados', alisados),
+    #path('Afeitado', afeitado),
+    #path('Peinados', peinados),
     path('Contacto', contacto),
     path('Profesionales', profesionales),
+    #path('Quienes_somos', quienes_somos),
+    #path('Direccion', direccion),
+    #path('Servicios', servicios),
+    
+
+
+    path('Login',views.login),
 ]
