@@ -1,4 +1,4 @@
-{% load crispy_forms_tags  %}
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -28,10 +28,10 @@
                     </a>
                  </div>
                     <nav class="navegador_informacion">
-                        <a href="">Quiénes somos</a>
+                        <a href="/prueba">Quiénes somos</a>
                         <a href="/Contacto">Contacto</a>
-                        <a href="">Dirección</a>
-                        <a href="">Profesionales</a>
+                        <a href="/prueba">Dirección</a>
+                        <a href="/Profesionales">Profesionales</a>
                         <a href="">Todos los servicios</a>
                     </nav>
             </section>    
@@ -42,24 +42,32 @@
     </header>
 
 
-    <main>
+    <main class="espacio">
 
 
-        <div class="container">
+        <section class="Barra_contenedor seccion">
 
-                <h2>Iniciar sesión Cliente</h2>
-    
-                <form method="POST">
-                    {{ form | crispy }}
-                    {% csrf_token %}
-                    <input type="submit" value="login" class="btn btn-success">
-                    <a href="/prueba"> <input type="button" value="volver" class="btn btn-info"> </a>
-    
-                    
-                    </form>
+            <h2 class="encabezado-servicios"></h2>
+                <div class="catalogo">
+                    <div class="catalogo_superior">
+                        <div class="diseño_login">
+                            <div class="centrado"> 
+                                <h2>Login Usuario</h2>
+                                <form method="POST">
+                                    {{ form.as_p}}
+                                    {% csrf_token %}
+                                     <div class="botones">                   
+                                        <input type="submit" value="login" class="btn btn-success">
+                                        <a href="/prueba"> <input type="button" value="volver"> </a>
+                                    </div>
+                                </form>
+                            </div>            
+                        </div>
+                        
+                     </div>
+            </div>
+        </section>
 
-       </div>       
-        
         
 
     </main>

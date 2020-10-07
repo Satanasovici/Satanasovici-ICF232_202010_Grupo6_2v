@@ -13,8 +13,33 @@ def index_prueba(request):
 def Cortes(request):
         return render(request, "pagina_cortes.html")
 
-def contacto(request):
-        return render(request, "contacto_prueba.html")
+
+
+def Alisados(request):
+        return render(request, "pagina_alisados.html")
+
+
+def Tintes(request):
+        return render(request, "pagina_tintes.html")
+
+
+def Afeitados(request):
+        return render(request, "pagina_afeitados.html")
+
+
+def Lavados(request):
+        return render(request, "pagina_lavados.html")
+
+
+def Peinados(request):
+        return render(request, "pagina_peinados.html")
+
+
+
+
+
+
+
 
 
 def profesionales(request):
@@ -23,6 +48,11 @@ def profesionales(request):
          'peluquero':horario
     }
     return render(request, "pagina_profesionales.html", data)
+
+
+def contacto(request):
+        return render(request, "contacto_prueba.html")
+
 
 
 

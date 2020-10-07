@@ -231,3 +231,36 @@ body{
 .filas_contacto{
     padding-top: 2rem;
 }
+
+
+
+/**************INICIO DE SESION******************/
+
+.centrado{
+
+    text-align: center;
+    color: white;
+}
+
+
+.botones{
+    padding: 2rem;
+}
+
+.espacio{
+
+padding-top: 5rem;
+padding-bottom: 25rem;
+
+}
+
+.diseño_login{
+    
+    flex-basis: calc(35%);
+
+    border-style: solid;
+    border-color: blanchedalmond;
+    background-color: rgb(37, 36, 36);
+    border-width: 3px;
+    
+}

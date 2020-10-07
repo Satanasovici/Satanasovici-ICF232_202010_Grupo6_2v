@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peluquería Rumps</title>
+    <title>Cortes</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
 
@@ -44,51 +44,43 @@
     <main>
         <section class="Barra_contenedor seccion">
 
-            <h2 class="encabezado-servicios">Información peluquería</h2>
+            <h2 class="encabezado-servicios">Tipos de Lavados</h2>
                 <div class="catalogo">
                     <div class="catalogo_superior">
-                        <div class="informacion_contacto">
-                            
-                            <table class="table">
-                                <tr>
-                                    <th>    Nombre  </th>
-                                    <th>Apellido</th>
-                                    <th>Rubro</th>
-                                    <th>Teléfono</th>
-                                    <th>Correo electronico</th>
-                                    <th>Horario</th>       
-                                </tr>
-                            
-                                {% for p in peluquero %}
-                            
-                                <tr>
-                                    <td class="fila_profesionales">{{ p.nombre }}</td>
-                                    <td class="fila_profesionales">{{ p.apellido }}</td>
-                                    <td class="fila_profesionales">{{ p.rubro }}</td>
-                                    <td class="fila_profesionales">{{ p.telefono }}</td>
-                                    <td class="fila_profesionales">{{ p.email }}</td>
-                                    <td class="fila_profesionales">{{ p.horario }}</td>
-                                    
-                                </tr>
-                                
-                            
-                            
-                                {% endfor %}
-                            
-                            
-                            </table>
-                            
-                            <hr/>
-                            
-                            <a href="/prueba"><input type="button" value="volver" class="btn btn-info"></a>
-
-
+                        <div class="servicios">
+                            <h3>LAVADO</h3>
+                            <img src="{% static 'imagenes/imagen_prueba.jpg' %}"  alt="My image">
+                            <div class="contenido-servicio">
+                                <a href="" class="boton boton-gris">Ver más</a>
                             </div>
                         </div>
-                </div>
+                        <div class="servicios">
+                            <h3>LAVADO</h3>
+                            <img src="{% static 'imagenes/imagen_prueba.jpg' %}" alt="My image">
+                            <div class="contenido-servicio">
+                                <a href="" class="boton boton-gris">Ver más</a>
+                            </div>
+                        </div>
+                        <div class="servicios">
+                            <h3>LAVADO</h3>
+                            <img src="{% static 'imagenes/imagen_prueba.jpg' %}"  alt="My image">
+                            <div class="contenido-servicio">
+                                <a href="" class="boton boton-gris">Ver más</a>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="catalogo_inferior">
+                        <div class="servicios">
+                            <h3>LAVADO</h3> 
+                            <img src="{% static 'imagenes/imagen_prueba.jpg' %}"  alt="My image"> 
+                            <div class="contenido-servicio">
+                                <a href="" class="boton boton-gris">Ver más</a>   
+                            </div>         
+                        </div>
+
+                     </div>
+            </div>
         </section>
-        
-        
 
     </main>
 
@@ -118,4 +110,5 @@
     </footer>
 
 </body>
+
 </html>

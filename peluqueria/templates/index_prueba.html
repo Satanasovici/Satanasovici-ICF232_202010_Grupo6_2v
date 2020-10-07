@@ -15,21 +15,33 @@
         <div class="Barra_contenedor">
             <div class="barra_superior">
                 <nav class="navegador_superior">
+                    {% if request.user.is_authenticated %}
+                    <a href="/logout">Cerrar sesión</a>
+                    <a href="">Perfil de Usuario</a>
+                    {% else %}   
                     <a href="/Login">Iniciar sesión</a>
-                    <a href="">Registro</a>
+                    <a href="">Registro</a> 
+                    {% endif %}
+
                 </nav>
             </div>
 
             <section class="barra_inferior">
                 <div class="peluqueria">
                     <a href="/prueba">
-                     <h1>Bienvenido a la Peluquería</h1>
+                        {% if request.user.is_authenticated %}
+                        <h1>Bienvenido a la Peluquería <b>{{request.user.username}}</b></h1>
+                        {% else %}
+                        <h1>Bienvenido a la Peluquería <b>{{request.user.username}}</b></h1>
+                        {% endif %}
+
                     </a>
+                    
                  </div>
                     <nav class="navegador_informacion">
-                        <a href="">Quiénes somos</a>
+                        <a href="/prueba">Quiénes somos</a>
                         <a href="/Contacto">Contacto</a>
-                        <a href="/">Dirección</a>
+                        <a href="/prueba">Dirección</a>
                         <a href="/Profesionales">Profesionales</a>
                         <a href="">Todos los servicios</a>
                     </nav>
@@ -58,14 +70,14 @@
                             <h3>tintes</h3>
                             <img src="{% static 'imagenes/Tintes.jpg' %}" alt="My image">
                             <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>
+                                <a href="/Tintes" class="boton boton-gris">Ver más</a>
                             </div>
                         </div>
                         <div class="servicios">
                             <h3>alisados</h3>
                             <img src="{% static 'imagenes/Alisado.jpg' %}"  alt="My image">
                             <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>
+                                <a href="/Alisados" class="boton boton-gris">Ver más</a>
                             </div>
                         </div>
                      </div>
@@ -74,21 +86,21 @@
                             <h3>Peinados</h3> 
                             <img src="{% static 'imagenes/Peinado.jpg' %}"  alt="My image"> 
                             <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>   
+                                <a href="/Peinados" class="boton boton-gris">Ver más</a>   
                             </div>         
                         </div>
                         <div class="servicios ">
                             <h3>Lavados</h3> 
                             <img src="{% static 'imagenes/Lavado.jpg' %}"  alt="My image">
                             <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>    
+                                <a href="/Lavados" class="boton boton-gris">Ver más</a>    
                             </div>   
                         </div>
                         <div class="servicios">
                             <h3>Afeitado</h3> 
                             <img src="{% static 'imagenes/Afeitado.jpg' %}"  alt="My image">
                             <div class="contenido-servicio">
-                                <a href="" class="boton boton-gris">Ver más</a>    
+                                <a href="/Afeitado" class="boton boton-gris">Ver más</a>    
                             </div>   
                         </div>
                      </div>

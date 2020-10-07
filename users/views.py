@@ -57,9 +57,6 @@ def index_cliente(request):
     return redirect('/')
     
  
-def logout(request):
-    do_logout(request)
-    return redirect('/')
 
 def config(request):
     if request.user.is_authenticated:
@@ -139,3 +136,8 @@ def login(request):
         # Si llegamos al final renderizamos el formulario
     return render(request, "pagina_iniciar_sesion.html", {'form': form})
 
+
+
+def logout(request):
+    do_logout(request)
+    return redirect('/prueba')
