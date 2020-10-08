@@ -7,12 +7,16 @@ from django.contrib.auth import logout as do_logout
 from .models import Peluquero_info
 
 
+
+def Editar_Perfil(request):
+        return render(request, "Editar_Perfil.html")
+
+
 def index_prueba(request):
         return render(request, "index_prueba.html")
 
 def Cortes(request):
         return render(request, "pagina_cortes.html")
-
 
 
 def Alisados(request):

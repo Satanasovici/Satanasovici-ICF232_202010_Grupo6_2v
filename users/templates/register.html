@@ -1,30 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Rumps</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
 
 
-{% load crispy_forms_tags  %}
+</head>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<body>
+
+
+
+
+
+
     
+    <main class="espacio">
 
 
-    <div class="container">
-        {% block contenido %}
+        <section class="Barra_contenedor seccion">
 
-            <h2>Registrar usuario</h2>
+            <h2 class="encabezado-servicios"></h2>
+                <div class="catalogo">
+                    <div class="catalogo_superior">
+                        <div class="diseño_login">
+                            <div class="centrado"> 
+                                
 
-            <form method="POST">
-                {{ form | crispy }}
-                {% csrf_token %}
-            <input type="submit" value="registrar" class="btn btn-success">
-            <a href="/index"> <input type="button" value="volver" class="btn btn-info"> </a>
+                                <h2>Registrar usuario</h2>
 
-        </form>
+                                <form method="POST">
+                                    {{ form.as_p }}
+                                    {% csrf_token %}
+                                    <input type="submit" value="registrar" >
+                                    <a href="/prueba"> <input type="button" value="volver" > </a>
 
-        {% endblock %}
+                                </form>
+                            
+                            
+                               
+                            </div>            
+                        </div>
+                        
+                     </div>
+            </div>
+        </section>
 
-    </div>
-       
+        
 
-<hr />
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
     

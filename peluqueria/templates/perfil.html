@@ -1,44 +1,91 @@
 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Rumps</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+</head>
 
-<div class="container">
-    {% block contenido %}
-
-    <h2>    Perfíl   </h2>
-
-    <table class="table">
-
-
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo electronico</th>
-            <th>Nombre de usuario</th>
+<body>
     
-        </tr>
-    
-    
-    <tr>
-        <td>{{ user.first_name }}</td>
-        <td>{{ user.last_name }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.username }}</td>
-    
-    </tr>
-    
-    
-    
-    </table>
-    
-    <hr/>
-    
-    <a href="/index"><input type="button" value="volver" class="btn btn-info"></a>
+    <main class="espacio">
+
+
+        <section class="Barra_contenedor seccion">
+
+            <h2 class="encabezado-servicios"></h2>
+                <div class="catalogo">
+                    <div class="catalogo_superior">
+                        <div class="diseño_login">
+                            <div class="centrado"> 
+                                
+
+                                <h2>    Perfíl   </h2>
+                            
+                                <table class="table">
+                            
+                            
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Correo electronico</th>
+                                        <th>Nombre de usuario</th>
+                                
+                                    </tr>
+                                
+                                
+                                <tr>
+                                    <td>{{ user.first_name }}</td>
+                                    <td>{{ user.last_name }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.username }}</td>
+                                
+                                </tr>
+                                
+                                
+                                
+                                </table>
+                                
+                                <hr/>
+                                
+                                <a  href="/prueba"><input type="button" value="volver" ></a>
+                                <a  href="/configuracion"><input type="button" value="editar" ></a>
+                            
+                            
+                            
+                            
+                            
+                               
+                            </div>            
+                        </div>
+                        
+                     </div>
+            </div>
+        </section>
+
+    </main>
+
+
+</body>
+</html>
 
 
 
 
 
-    {% endblock %}
-</div>
+
+
+
+
+
+
+
+
+
+

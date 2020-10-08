@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from peluqueria.views import catalogo, perfil, informacion_peluqueria, agenda, index_prueba, Cortes, contacto, profesionales, Alisados, Tintes, Lavados, Peinados, Afeitados
+from peluqueria.views import catalogo, perfil, informacion_peluqueria, agenda, index_prueba, Cortes, contacto, profesionales, Alisados, Tintes, Lavados, Peinados, Afeitados , Editar_Perfil
 
 from users import views
 
@@ -49,6 +49,7 @@ urlpatterns = [
     #path('Quienes_somos', quienes_somos),
     #path('Direccion', direccion),
     #path('Servicios', servicios),
+    path('Editar', Editar_Perfil),
     
 
 

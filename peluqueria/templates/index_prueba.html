@@ -17,10 +17,10 @@
                 <nav class="navegador_superior">
                     {% if request.user.is_authenticated %}
                     <a href="/logout">Cerrar sesión</a>
-                    <a href="">Perfil de Usuario</a>
+                    <a href="/perfil">Perfil de Usuario</a>
                     {% else %}   
                     <a href="/Login">Iniciar sesión</a>
-                    <a href="">Registro</a> 
+                    <a href="registro">Registro</a> 
                     {% endif %}
 
                 </nav>
@@ -47,7 +47,6 @@
                     </nav>
             </section>    
                     
-
         </div>     
        
     </header>
