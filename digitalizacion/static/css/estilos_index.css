@@ -264,3 +264,14 @@ padding-bottom: 25rem;
     border-width: 3px;
     
 }
+
+.links_perfil a{
+    color: white;
+    text-decoration: none;
+    
+}
+
+.links_perfil a:hover{
+    color: wheat;
+    
+}

@@ -22,7 +22,7 @@ from users import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.welcome),
+    path('', index_prueba),
     #path('loginEmpleado', views.loginEmpleado),
     path('loginCliente', views.loginCliente),
     path('registro', views.register),
