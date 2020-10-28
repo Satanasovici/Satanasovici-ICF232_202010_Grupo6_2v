@@ -1,0 +1,277 @@
+
+
+/* GLOBALES */
+
+img{
+    max-width: 100%;
+
+
+}
+
+.boton{
+    background-color: gray;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+.Barra_contenedor{
+    max-width: 170rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*********************** Dimensiones y estructura de la pagina ***************************/
+
+.titulo{
+    background-color: black;
+    background-position: center center;
+}
+
+
+.barra_superior{
+    padding-top: 0.8rem;
+}
+
+
+/* ESTRUCTURA Del Footer */
+
+.pie_pagina {
+    background-color: blanchedalmond;
+    background: url(../imagenes/Imagen_footer.jpg);
+    background-position: center center;
+    background-size: cover;
+    -webkit-filter: brightness(50%);
+    filter: brightness(50%);
+    border-style: solid;
+    border-color: blanchedalmond;
+    border-width: 3px;
+
+}
+
+
+
+
+/* Fuente de la pagina */
+
+html{
+    font-size: 62.5%;
+    background-color: rgb(131, 131, 131);
+    background: url(../imagenes/Fondo.jpg);
+    background-position: center center;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5rem;
+}
+
+
+.peluqueria a{
+    text-decoration: none;
+}
+
+
+
+
+
+/*********************** AJUSTES DE LAS BARRAS DE NAVEGACION ****************************/
+
+/*---------Ajustes DE REGISTRO/LOGIN -------*/
+
+.navegador_superior a{
+    color: white;
+    margin-right: 2rem;
+}
+
+/* Color de cursor al pasar por encima */
+
+.navegador_superior a:hover{
+    color: wheat;
+}
+
+/* Margenes de Registro/login*/
+
+.navegador_superior a:last-of-type{
+    margin:0;
+}
+
+/* Ajuste de barra de navegacion inferior */
+
+.barra_inferior{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    align-items: center;
+
+}
+
+.barra_inferior h1{
+    color: white;
+}
+
+.navegador_informacion a{
+    color: white;
+    margin-right: 2rem;
+    
+    
+}
+
+.navegador_informacion a:last-of-type{
+    margin:0;
+}
+
+.navegador_informacion a:hover {
+    color: wheat;
+}
+
+
+/* ------------------------------------------*/
+
+/* ESTRUCTURA DE LOS SERVICIOS */
+
+
+.encabezado-servicios{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: cursive;
+}
+
+.seccion {
+    margin-top: 1rem;
+    margin-bottom: 15rem;
+    background-position: center center;
+}
+
+.catalogo{
+    /*display: flex;*/
+    align-items: flex-start;
+    justify-content: space-between;
+
+}
+
+.catalogo_superior{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 4rem;
+   
+}
+
+.catalogo_inferior{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 4rem;
+}
+
+
+.servicios h3 {
+    text-transform: uppercase;
+    color: rgb(175, 175, 175);
+
+}
+
+
+.servicios{
+    
+    flex-basis: calc(25% - 10rem);
+    text-align: center;
+    border-style: solid;
+    border-color: blanchedalmond;
+    background-color: black;
+    border-width: 3px;
+    
+}
+
+
+
+.servicios a:hover{
+    color: wheat;
+}
+
+
+
+.contenido-servicio{
+    padding: 2rem;
+}
+
+/* ------------------------------------------*/
+
+
+
+
+
+
+/********* Pagina Contacto ***********************/
+
+
+.informacion_contacto{
+    color: white;
+    padding: 4rem;
+    background-color: black;
+    border-style: solid;
+    border-color: white;
+}
+
+.fila_profesionales{
+    padding-top: 2rem;
+}
+
+
+/************* PAGINA PROFESIONALES ****************/
+
+.filas_contacto{
+    padding-top: 2rem;
+}
+
+
+
+/**************INICIO DE SESION******************/
+
+.centrado{
+
+    text-align: center;
+    color: white;
+}
+
+
+.botones{
+    padding: 2rem;
+}
+
+.espacio{
+
+padding-top: 5rem;
+padding-bottom: 25rem;
+
+}
+
+.diseño_login{
+    
+    flex-basis: calc(35%);
+
+    border-style: solid;
+    border-color: blanchedalmond;
+    background-color: rgb(37, 36, 36);
+    border-width: 3px;
+    
+}
+
+.links_perfil a{
+    color: white;
+    text-decoration: none;
+    
+}
+
+.links_perfil a:hover{
+    color: wheat;
+    
+}

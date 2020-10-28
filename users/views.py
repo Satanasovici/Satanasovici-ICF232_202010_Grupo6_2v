@@ -22,7 +22,7 @@ def register(request):
 
             if user is not None:
                 do_login(request, user)
-                return redirect('/')
+                return redirect('/prueba')
 
     return render(request, "register.html", {'form': form})
 
@@ -57,9 +57,6 @@ def index_cliente(request):
     return redirect('/')
     
  
-def logout(request):
-    do_logout(request)
-    return redirect('/')
 
 def config(request):
     if request.user.is_authenticated:
@@ -67,13 +64,16 @@ def config(request):
     return redirect('/')
 
 
+
+#editadas
+
 def deleteuser(request):
     if request.method == 'POST':
         delete_form = UserDeleteForm(request.POST, instance=request.user)
         user = request.user
         user.delete()
         messages.info(request, 'Tu cuenta ha sido borrada.')
-        return redirect('/')
+        return redirect('/prueba')
     else:
         delete_form = UserDeleteForm(instance=request.user)
 
@@ -83,15 +83,20 @@ def deleteuser(request):
 
     return render(request, "borrarCuenta.html", context)
 
+
+
+
+
 def editProfile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             user = form.save()
-            return redirect('/index')
+            return redirect('/prueba')
     else:
         form = EditProfileForm(instance=request.user)
-        return render(request, "modificarDatos.html", {'form': form})
+        return render(request, "Editar_Perfil.html", {'form': form})
+
     
 def changePassword(request):
     if request.method == 'POST':
@@ -99,7 +104,7 @@ def changePassword(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return redirect('/index')
+            return redirect('/prueba')
         else:
             return redirect('/password')
     else:
@@ -107,3 +112,39 @@ def changePassword(request):
         return render(request, "cambiarClave.html", {'form': form})
 
 
+
+
+
+
+
+#NUEVAS PAGINAS
+
+
+
+def login(request):
+    form = AuthenticationForm()
+    if request.method == "POST":
+        form = AuthenticationForm(data=request.POST)
+        # Si el formulario es válido...
+        if form.is_valid():
+            
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            
+            user = authenticate(username=username, password=password)
+
+            
+            if user is not None:
+                
+                do_login(request, user)
+               
+                return redirect('/prueba')
+   
+        # Si llegamos al final renderizamos el formulario
+    return render(request, "pagina_iniciar_sesion.html", {'form': form})
+
+
+
+def logout(request):
+    do_logout(request)
+    return redirect('/prueba')

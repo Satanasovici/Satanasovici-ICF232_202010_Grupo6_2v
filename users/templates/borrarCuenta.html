@@ -1,24 +1,61 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<div class="container">
-    {% block contenido %}
-
-    <form method="POST">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Borrar cuenta</legend>
-                <p>La cuenta se eliminará permanentemente. ¿Seguro que desea proceder?</p>
-                {{ form }}
-        </fieldset>
-        <div class="form-group">
-            <button class="btn btn-danger" type="submit">Eliminar Cuenta</button>
-            <a href="/index"><input type="button" value="volver" class="btn btn-info"></a>
-        </div>
-    </form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Rumps</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
 
 
-    {% endblock %}
-</div>
+</head>
+
+<body>
+    
+    <main class="espacio">
+
+
+        <section class="Barra_contenedor seccion">
+
+            <h2 class="encabezado-servicios"></h2>
+                <div class="catalogo">
+                    <div class="catalogo_superior">
+                        <div class="diseño_login">
+                            <div class="centrado"> 
+                                
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <fieldset class="form-group">
+                                        <legend class="border-bottom mb-4">Borrar cuenta</legend>
+                                            <p>La cuenta se eliminará permanentemente. </p>
+                                            <p>¿Seguro que desea proceder?</p>
+                                            {{ form }}
+                                    </fieldset>
+                                    <div class="form-group">
+                                        <button type="submit">Eliminar Cuenta</button>
+                                        <a href="/prueba"><input type="button" value="volver" ></a>
+                                    </div>
+                                </form>
+                            
+                            </div>            
+                        </div>
+                        
+                     </div>
+            </div>
+        </section>
+
+    
+    </main>
+
+</body>
+</html>
+
+
+
+    
+
 
 
 

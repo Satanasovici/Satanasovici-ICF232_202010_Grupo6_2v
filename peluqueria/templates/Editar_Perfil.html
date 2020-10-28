@@ -1,0 +1,118 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Rumps</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+
+
+</head>
+<body>
+
+    <header class="titulo">
+        <div class="Barra_contenedor">
+            <div class="barra_superior">
+                <nav class="navegador_superior">
+                    {% if request.user.is_authenticated %}
+                    <a href="/logout">Cerrar sesión</a>
+                    <a href="/perfil">Perfil de Usuario</a>
+                    {% else %}   
+                    <a href="/Login">Iniciar sesión</a>
+                    <a href="registro">Registro</a> 
+                    {% endif %}
+
+                </nav>
+            </div>
+
+            <section class="barra_inferior">
+                <div class="peluqueria">
+                    <a href="/prueba">
+                        {% if request.user.is_authenticated %}
+                        <h1>Bienvenido a la Peluquería <b>{{request.user.username}}</b></h1>
+                        {% else %}
+                        <h1>Bienvenido a la Peluquería <b>{{request.user.username}}</b></h1>
+                        {% endif %}
+
+                    </a>
+                    
+                 </div>
+                    <nav class="navegador_informacion">
+                        <a href="/prueba">Quiénes somos</a>
+                        <a href="/Contacto">Contacto</a>
+                        <a href="/prueba">Dirección</a>
+                        <a href="/Profesionales">Profesionales</a>
+                        <a href="">Todos los servicios</a>
+                    </nav>
+            </section>    
+                    
+        </div>     
+       
+    </header>
+    
+    
+    <main class="espacio">
+
+        <section class="Barra_contenedor seccion">
+
+                <h2 class="encabezado-servicios"></h2>
+                <div class="catalogo">
+                    <div class="catalogo_superior">
+                        <div class="diseño_login">
+                            <div class="centrado"> 
+
+
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{ form.as_p}}
+                                    <a href="/configuracion"> <input type="button" value="volver" ></a>
+                                    <input type="submit" value="Confirmar cambios" >
+                                    
+                                    
+                                </form> 
+                
+                            </div>            
+                        </div>
+                        
+                     </div>
+                </div>
+        </section>
+
+    
+    </main>
+
+
+    <footer class = "pie_pagina ">
+       
+        <div class= "contenedor_inferior Barra_contenedor">
+    
+            <h2 class="encabezado-footer">Visita nuestras redes sociales</h2>
+    
+            <div>
+                <a target="_blank" href="">Instagram</a>    
+            </div>
+    
+            <div>
+    
+                <a target="_blank" href="">Facebook</a>
+            </div>
+            <div>
+    
+                <a target="_blank" href="">Whatsapp</a>
+            </div>
+        </div>        
+        
+    </footer>
+    
+
+</body>
+</html>
+
+
+
+
+
+

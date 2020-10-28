@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from peluqueria.views import catalogo, perfil, informacion_peluqueria, agenda
+from peluqueria.views import catalogo, perfil, informacion_peluqueria, agenda, index_prueba, Cortes, contacto, profesionales, Alisados, Tintes, Lavados, Peinados, Afeitados , Editar_Perfil
+
 from users import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.welcome),
+    path('', index_prueba),
     #path('loginEmpleado', views.loginEmpleado),
     path('loginCliente', views.loginCliente),
     path('registro', views.register),
@@ -36,4 +37,21 @@ urlpatterns = [
     #path('BorrarCuenta', views.opcionesCuenta),
     path('modif', views.editProfile),
     path('password', views.changePassword),
+    path('prueba', index_prueba),
+    path('Cortes', Cortes),
+    path('Tintes', Tintes),
+    path('Lavados', Lavados),
+    path('Alisados', Alisados),
+    path('Afeitado', Afeitados),
+    path('Peinados', Peinados),
+    path('Contacto', contacto),
+    path('Profesionales', profesionales),
+    #path('Quienes_somos', quienes_somos),
+    #path('Direccion', direccion),
+    #path('Servicios', servicios),
+    path('Editar', Editar_Perfil),
+    
+
+
+    path('Login',views.login),
 ]

@@ -1,44 +1,153 @@
 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Rumps</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+</head>
 
-<div class="container">
-    {% block contenido %}
+<body>
+    <header class="titulo">
+        <div class="Barra_contenedor">
+            <div class="barra_superior">
+                <nav class="navegador_superior">
+                    {% if request.user.is_authenticated %}
+                    <a href="/logout">Cerrar sesión</a>
+                    <a href="/perfil">Perfil de Usuario</a>
+                    {% else %}   
+                    <a href="/Login">Iniciar sesión</a>
+                    <a href="registro">Registro</a> 
+                    {% endif %}
 
-    <h2>    Perfíl   </h2>
+                </nav>
+            </div>
 
-    <table class="table">
+            <section class="barra_inferior">
+                <div class="peluqueria">
+                    <a href="/prueba">
+                        {% if request.user.is_authenticated %}
+                        <h1>Bienvenido a la Peluquería <b>{{request.user.username}}</b></h1>
+                        {% else %}
+                        <h1>Bienvenido a la Peluquería <b>{{request.user.username}}</b></h1>
+                        {% endif %}
 
-
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo electronico</th>
-            <th>Nombre de usuario</th>
+                    </a>
+                    
+                 </div>
+                    <nav class="navegador_informacion">
+                        <a href="/prueba">Quiénes somos</a>
+                        <a href="/Contacto">Contacto</a>
+                        <a href="/prueba">Dirección</a>
+                        <a href="/Profesionales">Profesionales</a>
+                        <a href="">Todos los servicios</a>
+                    </nav>
+            </section>    
+                    
+        </div>     
+       
+    </header>
     
-        </tr>
+    <main class="espacio">
+
+
+        <section class="Barra_contenedor seccion">
+
+            <h2 class="encabezado-servicios"></h2>
+                <div class="catalogo">
+                    <div class="catalogo_superior">
+                        <div class="diseño_login">
+                            <div class="centrado"> 
+                                
+
+                                <h2>    Perfíl   </h2>
+                            
+                                <table class="table">
+                            
+                            
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Correo electronico</th>
+                                        <th>Nombre de usuario</th>
+                                
+                                    </tr>
+                                
+                                
+                                <tr>
+                                    <td>{{ user.first_name }}</td>
+                                    <td>{{ user.last_name }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.username }}</td>
+                                
+                                </tr>
+                                
+                                
+                                
+                                </table>
+                                
+                                <hr/>
+                                
+                                <a  href="/prueba"><input type="button" value="volver" ></a>
+                                <a  href="/configuracion"><input type="button" value="editar" ></a>
+                            
+                            
+                            
+                            
+                            
+                               
+                            </div>            
+                        </div>
+                        
+                     </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class = "pie_pagina ">
+       
+        <div class= "contenedor_inferior Barra_contenedor">
     
+            <h2 class="encabezado-footer">Visita nuestras redes sociales</h2>
     
-    <tr>
-        <td>{{ user.first_name }}</td>
-        <td>{{ user.last_name }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.username }}</td>
+            <div>
+                <a target="_blank" href="">Instagram</a>    
+            </div>
     
-    </tr>
+            <div>
     
+                <a target="_blank" href="">Facebook</a>
+            </div>
+            <div>
     
-    
-    </table>
-    
-    <hr/>
-    
-    <a href="/index"><input type="button" value="volver" class="btn btn-info"></a>
+                <a target="_blank" href="">Whatsapp</a>
+            </div>
+        </div>        
+        
+    </footer>
+      
+
+</body>
+</html>
 
 
 
 
 
-    {% endblock %}
-</div>
+
+
+
+
+
+
+
+
+
+
