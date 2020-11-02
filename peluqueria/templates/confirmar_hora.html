@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<main>
+    <section class="Barra_contenedor seccion">
+        <h2 class="encabezado-servicios">Confirmar Hora</h2>
+            <div class="catalogo_superior">
+
+                {% for hora_peluqueria in horario %}
+                    {% if cod2 == hora_peluqueria.id_hora %}
+                        <div class="servicios color_letra">
+                            <h1>{{hora_peluqueria.hora_inicio}} </h1>
+                            <div class="contenido-servicio">
+                                <a href="/hora_confirmada/{{ cod }}/{{ cod2 }}">SI</a>
+                                <a href="/">NO</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+
+            </div>
+
+
+    </section>
+</main>
+
+{% endblock %}

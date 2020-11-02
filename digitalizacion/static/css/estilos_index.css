@@ -184,10 +184,13 @@ body{
     
     flex-basis: calc(25% - 10rem);
     text-align: center;
-    border-style: solid;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: groove;
     border-color: blanchedalmond;
     background-color: black;
     border-width: 3px;
+    box-shadow: 2px 2px 5px black;
     
 }
 
@@ -201,7 +204,19 @@ body{
 
 .contenido-servicio{
     padding: 2rem;
+       
 }
+
+.contenido-servicio a{
+    border: groove;
+    border-radius: 20px;
+       
+}
+
+.fondo-gris{
+    background-color:rgb(175, 175, 175);
+}
+
 
 /* ------------------------------------------*/
 
@@ -274,4 +289,13 @@ padding-bottom: 25rem;
 .links_perfil a:hover{
     color: wheat;
     
+}
+
+.color_letra{
+    color:white;
+}
+
+.infor_servicio{
+    color:rgb(175, 175, 175);
+    text-align: center;
 }
