@@ -12,6 +12,7 @@
                     {% for peluquero in peluqueros %}
                             {% if cod == peluquero.id_servicios_p_id %}
                                 <div class="servicios">
+                                    <h3>{{peluquero.rut_usuario_p_id}}</h3>
                                     <img src="{% static 'imagenes/peluquero.jpg' %}" alt="My image">
                                     <div class="contenido-servicio">
                                         <a href="/seleccionar_fecha/{{peluquero.rut_usuario_p_id}}" class="boton">Seleccionar</a>   

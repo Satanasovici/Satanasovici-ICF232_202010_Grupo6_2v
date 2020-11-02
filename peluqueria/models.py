@@ -46,6 +46,7 @@ class servicios (models.Model):
     id_servicios = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=20)
     duracion_aproximada = models.CharField(max_length=20)
+    precio_servicio = models.IntegerField()
 
 
 

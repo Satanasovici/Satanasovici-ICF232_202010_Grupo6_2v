@@ -175,9 +175,6 @@ def hora_confirmada (request, cod, cod2):
 
 
 
-
-
-
 def reservarHora (request):
 
     return redirect( '/' )
