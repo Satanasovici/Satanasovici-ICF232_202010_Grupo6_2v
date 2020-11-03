@@ -10,6 +10,7 @@ from datetime import datetime
 from django.utils import timezone, dateformat
 from django.db.models import Count
 from django.http import JsonResponse
+from django.contrib.auth.models import User
 
 
 def Editar_Perfil(request):
@@ -110,11 +111,16 @@ def agenda(request):
 
 def seleccionar_peluquero (request, cod):
 
-    peluqueros = peluqueros_servicios.objects.all()
+    peluquero = peluqueros_servicios.objects.all()
+    nombre = User.objects.all()
+    usuarios = peluqueros.objects.all()
 
     return render (request, "seleccionar_peluquero.html", {
-        'peluqueros':peluqueros,
-        'cod':cod
+        'peluqueros':peluquero,
+        'cod':cod,
+        'nombre':nombre,
+        'usuarios':usuarios
+        
     })
 
 
@@ -123,6 +129,7 @@ def seleccionar_hora (request,cod,cod2):
    
     horas = peluquero_horas.objects.all()
     horario = horas_peluqueria.objects.all()
+    
     
 
     return render (request, "ver_horas.html", {
