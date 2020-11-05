@@ -295,6 +295,11 @@ padding-bottom: 25rem;
     color:white;
 }
 
+.color_letra a{
+    text-decoration: none;
+    color: rgb(95, 90, 90)
+}
+
 .infor_servicio{
     color:rgb(175, 175, 175);
     text-align: center;

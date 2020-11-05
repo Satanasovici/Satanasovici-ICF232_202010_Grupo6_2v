@@ -18,10 +18,9 @@
                                 {% for hora_peluqueria in horario %}
                                     {% if hora.id_horas_h_id == hora_peluqueria.id_hora %}
                                         {% if hora_peluqueria.id_estado_id == 1 %}
-                                            <h1> {{hora.id}} </h1>
-                                            <div class="servicios">
-                                                <li class="color_letra">disponible</li>
-                                                <a href="/confirmHora/{{ hora.id }}/{{hora_peluqueria.id_hora}}" class="boton fondo-gris"> {{hora_peluqueria.hora_inicio}} </a>
+                                            <div class="servicios color_letra fondo-gris ">
+                                                <li>disponible</li>
+                                                <a href="/confirmHora/{{ hora.id }}/{{hora_peluqueria.id_hora}}" > {{hora_peluqueria.hora_inicio}} </a>
                                             </div>
                                         {% endif %}
 
