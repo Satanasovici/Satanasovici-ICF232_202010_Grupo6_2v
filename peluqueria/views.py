@@ -155,8 +155,6 @@ def seleccionar_fecha (request, cod):
 
 
 
-
-
 def confirmar_hora (request, cod, cod2):
 
 
