@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+    {% block content %}
+
+    <main>
+        <section class="Barra_contenedor seccion">
+            <h2 class="encabezado-servicios">Selecciona una hora</h2>
+                <div class="catalogo_superior">
+
+               
+            
+                    {% for hora in horas %}
+
+                        {% if cod2 == hora.id_peluquero_h_id %}
+                            {% if cod == hora.id_fecha_h_id %}
+                                {% for hora_peluqueria in horario %}
+                                    {% if hora.id_horas_h_id == hora_peluqueria.id_hora %}
+                                        {% if hora_peluqueria.id_estado_id == 1 %}
+                                            
+                                            <div class="servicios color_letra fondo-gris ">
+                                                <li>disponible</li>
+                                                <a href="/confirmHora/{{ hora.id }}/{{hora_peluqueria.id_hora}}" > {{hora_peluqueria.hora_inicio}} </a>
+                                            </div>
+                                        {% endif %}
+
+                                        {% if hora_peluqueria.id_estado_id == 2 %}
+                                            <li>NO DISPONIBLE</li>
+                                            <a href=""> {{hora_peluqueria.hora_inicio}} </a>
+                                        {% endif %}
+
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+
+                        {% endif %}
+
+                    {% endfor %}
+ 
+                </div>
+
+        </section>
+    </main>
+
+    {% endblock %}
+

@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+    {% block content %}
+
+    <main>
+        <section class="Barra_contenedor seccion">
+            <h2 class="encabezado-servicios">Selecciona un peluquero</h2>
+                <div class="catalogo_superior">
+                    
+                    {% for peluquero in peluqueros %}
+                            {% if cod == peluquero.id_servicios_p_id %}
+                                {%  for usuario in usuarios %}
+                           
+                                    {% if usuario.rut_usuario == peluquero.rut_usuario_p_id %}
+                                        {% for nombres in nombre %}
+                                            {% if nombres.id == usuario.id_usuario_p_id %}
+                                                <div class="servicios">
+                                                    <h3>{{nombres.first_name}} {{nombres.last_name }}</h3>
+                                                    <img src="{% static 'imagenes/peluquero.jpg' %}" alt="My image">
+                                                    <div class="contenido-servicio">
+                                                        <a href="/seleccionar_fecha/{{peluquero.rut_usuario_p_id}}" class="boton">Seleccionar</a>   
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor%}
+                                    {% endif%}
+                                {% endfor %}
+                            {% endif %}
+                    {% endfor %}
+ 
+                </div>
+        </section>
+    </main>
+
+    {% endblock %}
+
+
+
