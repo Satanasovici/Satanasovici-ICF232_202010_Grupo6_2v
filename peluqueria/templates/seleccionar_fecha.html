@@ -1,28 +1,28 @@
 {% extends 'layout.html' %}
 {% load static %}
 
-
-
+    
+    
 
     {% block content %}
 
     <main>
-        <section class="Barra_contenedor seccion">
-            <h2 class="encabezado-servicios">Selecciona una fecha</h2>
-                <div class="catalogo_superior">
 
-                    
-                    {% for fechas in fechas_peluqueria %}
-                        
-                            <div class="servicios color_letra fondo-gris">
-                            <a href="/selectHora/{{cod}}/{{fechas.id_fecha}} ">{{fechas.fecha.day}}/{{fechas.fecha.month}}/{{fechas.fecha.year}}</a>
-                        
-                    </div>
+            <div id="calendar">
 
-                    {% endfor %}
-                    
-                </div>
-        </section>
+            </div>
+ 
+    <script src="{% static 'Calendario/lib/main.js' %}"></script>
+    <script>
+
+            
+            document.addEventListener('DOMContentLoaded', function(){
+                var calendarUI = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarUI,{
+                });
+                calendar.render();
+            });
+        </script>
     </main>
 
     {% endblock %}
