@@ -75,7 +75,7 @@ class horas_peluqueria (models.Model):
 class fecha(models.Model):
 
     id_fecha = models.IntegerField(primary_key=True)
-    fecha = models.DateTimeField()
+    fecha = models.DateField('Fecha')
 
 
 

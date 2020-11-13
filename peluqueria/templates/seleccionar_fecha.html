@@ -1,28 +1,51 @@
 {% extends 'layout.html' %}
 {% load static %}
 
-    
+    <h1></h1>
     
 
     {% block content %}
 
-    <main>
+   
 
-            <div id="calendar">
+            <div id="calendar"  style="padding: 50px; background-color: rgb(54, 54, 54); color: white">
 
             </div>
  
     <script src="{% static 'Calendario/lib/main.js' %}"></script>
     <script>
 
-            
-            document.addEventListener('DOMContentLoaded', function(){
-                var calendarUI = document.getElementById('calendar');
-                var calendar = new FullCalendar.Calendar(calendarUI,{
-                });
-                calendar.render();
-            });
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+
+    selectable: true,
+    dateClick: function(info) {
+      alert('clicked ' + info.dateStr);
+    },
+    var fechassss = new dateObj.getDay(),
+    events: [
+
+      {
+        title: 'Seleccione casilla',
+        start: fechass,
+      },
+
+
+    ]
+  });
+
+  calendar.render();
+});
+
+
+  
+
         </script>
-    </main>
+    
 
     {% endblock %}
