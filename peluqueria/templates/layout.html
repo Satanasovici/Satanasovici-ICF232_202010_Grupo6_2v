@@ -1,4 +1,7 @@
+
 {% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +20,11 @@
             <div class="barra_superior">
                 <nav class="navegador_superior">
                     {% if request.user.is_authenticated %}
-                    <a href="/logout">Cerrar sesión</a>
-                    <a href="/perfil">Perfil de Usuario</a>
+                        <a href="/logout">Cerrar sesión</a>
+                        <a href="/perfil">Perfil de Usuario</a>
                     {% else %}   
-                    <a href="/Login">Iniciar sesión</a>
-                    <a href="registro">Registro</a> 
+                        <a href="/Login">Iniciar sesión</a>
+                        <a href="registro">Registro</a> 
                     {% endif %}
 
                 </nav>
@@ -31,22 +34,52 @@
                 <div class="peluqueria">
                     <a href="/prueba">
                         {% if request.user.is_authenticated %}
-                        <h1>Bienvenido a la Peluquería <b>{{request.user.username}}</b></h1>
+                            <h1>Bienvenido a la Peluquería <b>{{request.user.first_name}}</b></h1>
                         {% else %}
-                        <h1>Bienvenido a la Peluquería <b>{{request.user.username}}</b></h1>
+                         
+                        <h1>Bienvenido a la Peluquería <b>{{request.user.first_name}}</b></h1>
                         {% endif %}
-
                     </a>
                     
-                 </div>
-                    <nav class="navegador_informacion">
-                        <a href="/prueba">Quiénes somos</a>
-                        <a href="/Contacto">Contacto</a>
-                        <a href="/prueba">Dirección</a>
-                        <a href="/Profesionales">Profesionales</a>
-                        <a href="">Todos los servicios</a>
-                    </nav>
+                </div>
+                {% if perms.users.view_cliente %}
+                    {% if perms.users.view_peluquero %}  
+                        <nav class="navegador_informacion">
+                            <a href="/prueba">Añadir Peluquero</a>
+                            <a href="/Contacto">Calendario</a>
+                        </nav> 
+                    {% endif %} 
+                {% else %}
+                    {% if perms.users.view_cliente %}
+                        <nav class="navegador_informacion">
+                            <a href="/prueba">Quiénes somos</a>
+                            <a href="/Contacto">Contacto</a>
+                            <a href="/prueba">Dirección</a>
+                            <a href="/Profesionales">Reservas</a>
+                            <a href="/Profesionales">Profesionales</a>
+                        </nav>  
+                    {% else %}  
+                        {% if perms.users.view_peluquero %}
+                            <nav class="navegador_informacion">
+                                <a href="/prueba">Quiénes somos</a>
+                                <a href="/Contacto">Calendario</a>
+                                <a href="/prueba">Dirección</a>
+                                <a href="/Profesionales">Servicios realizados</a>
+                            </nav> 
+                        {% else %} 
+                            <nav class="navegador_informacion">
+                                <a href="/prueba">Quiénes somos</a>
+                                <a href="/Contacto">Contacto</a>
+                                <a href="/prueba">Dirección</a>
+                                <a href="/Profesionales">Reservas</a>
+                                <a href="/Profesionales">Profesionales</a>
+                            </nav>       
+                        {% endif %}  
+                    {% endif %}  
+                {% endif %}          
+
             </section>    
+
                     
         </div>     
        
@@ -54,9 +87,12 @@
 
     <div id = "content">
 
-        {% block content%}
+        
+            {% block content %}
+            {% endblock %}
 
-        {% endblock %}
+
+
 
     </div>
 

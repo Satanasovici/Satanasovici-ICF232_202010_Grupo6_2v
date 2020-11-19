@@ -1,62 +1,143 @@
 {% extends 'layout.html' %}
+
 {% load static %}
 
-    {% block content %}
-    
-        <main>
-            <section class="Barra_contenedor seccion">
 
-                <h2 class="encabezado-servicios">Tipos de servicios</h2>
-                    <div class="catalogo">
-                        <div class="catalogo_superior">
-                            <div class="servicios">
-                                <h3>Cortes</h3>
-                                <img src="{% static 'imagenes/Corte.jpg' %}"  alt="My image">
-                                <div class="contenido-servicio">
-                                    <a href="/Cortes" class="boton boton-gris">Ver más</a>
-                                </div>
-                            </div>
-                            <div class="servicios">
-                                <h3>tintes</h3>
-                                <img src="{% static 'imagenes/Tintes.jpg' %}" alt="My image">
-                                <div class="contenido-servicio">
-                                    <a href="/Tintes" class="boton boton-gris">Ver más</a>
-                                </div>
-                            </div>
-                            <div class="servicios">
-                                <h3>alisados</h3>
-                                <img src="{% static 'imagenes/Alisado.jpg' %}"  alt="My image">
-                                <div class="contenido-servicio">
-                                    <a href="/Alisados" class="boton boton-gris">Ver más</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="catalogo_inferior">
-                            <div class="servicios">
-                                <h3>Peinados</h3> 
-                                <img src="{% static 'imagenes/Peinado.jpg' %}"  alt="My image"> 
-                                <div class="contenido-servicio">
-                                    <a href="/Peinados" class="boton boton-gris">Ver más</a>   
-                                </div>         
-                            </div>
-                            <div class="servicios ">
-                                <h3>Lavados y cortes</h3> 
-                                <img src="{% static 'imagenes/Lavado.jpg' %}"  alt="My image">
-                                <div class="contenido-servicio">
-                                    <a href="/Lavados" class="boton boton-gris">Ver más</a>    
-                                </div>   
-                            </div>
-                            <div class="servicios">
-                                <h3>Afeitado</h3> 
-                                <img src="{% static 'imagenes/Afeitado.jpg' %}"  alt="My image">
-                                <div class="contenido-servicio">
-                                    <a href="/Afeitado" class="boton boton-gris">Ver más</a>    
-                                </div>   
-                            </div>
-                        </div>
-                </div>
-            </section>
+            {% block content %}
+                {% if perms.users.view_cliente %} 
+                    {% if perms.users.view_peluquero %}
+                        <main>
+                            <section class="Barra_contenedor seccion">
 
-        </main>
+                                <h2 class="encabezado-servicios">Tipos de servicios</h2>
+                                    <div class="catalogo">
+                                        <div class="catalogo_superior">
+                                            <div class="servicios">
+                                                <h3>Cortes</h3>
+                                                <img src="{% static 'imagenes/Corte.jpg' %}"  alt="My image">
+                                                <div class="contenido-servicio">
+                                                    <a href="/Cortes" class="boton boton-gris">Ver más</a>
+                                                </div>
+                                            </div>
+                                            <div class="servicios">
+                                                <h3>tintes</h3>
+                                                <img src="{% static 'imagenes/Tintes.jpg' %}" alt="My image">
+                                                <div class="contenido-servicio">
+                                                    <a href="/Tintes" class="boton boton-gris">Ver más</a>
+                                                </div>
+                                            </div>
+                                            <div class="servicios">
+                                                <h3>alisados</h3>
+                                                <img src="{% static 'imagenes/Alisado.jpg' %}"  alt="My image">
+                                                <div class="contenido-servicio">
+                                                    <a href="/Alisados" class="boton boton-gris">Ver más</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="catalogo_inferior">
+                                            <div class="servicios">
+                                                <h3>Peinados</h3> 
+                                                <img src="{% static 'imagenes/Peinado.jpg' %}"  alt="My image"> 
+                                                <div class="contenido-servicio">
+                                                    <a href="/Peinados" class="boton boton-gris">Ver más</a>   
+                                                </div>         
+                                            </div>
+                                            <div class="servicios ">
+                                                <h3>Lavados y cortes</h3> 
+                                                <img src="{% static 'imagenes/Lavado.jpg' %}"  alt="My image">
+                                                <div class="contenido-servicio">
+                                                    <a href="/Lavados" class="boton boton-gris">Ver más</a>    
+                                                </div>   
+                                            </div>
+                                            <div class="servicios">
+                                                <h3>Afeitado</h3> 
+                                                <img src="{% static 'imagenes/Afeitado.jpg' %}"  alt="My image">
+                                                <div class="contenido-servicio">
+                                                    <a href="/Afeitado" class="boton boton-gris">Ver más</a>    
+                                                </div>   
+                                            </div>
+                                        </div>
+                                </div>
+                            </section>
 
-    {% endblock %}
+                        </main>
+                    {% endif %}
+                    {% else %}
+                        {% if perms.users.view_peluquero %} 
+                            <main>
+                                <h2 class="encabezado-servicios">Tipos de servicios</h2>
+                                <div class="catalogo">
+                                    <div class="catalogo_superior">
+                                        <div class="servicios">
+                                            <h3>Perfil de Peluquero</h3>
+                                            <img src="{% static 'imagenes/Corte.jpg' %}"  alt="My image">
+                                            <div class="contenido-servicio">
+                                                <a href="/Cortes" class="boton boton-gris">Ver más</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+
+                            {% else %}
+
+                                    <main>
+                                        <section class="Barra_contenedor seccion">
+
+                                            <h2 class="encabezado-servicios">Tipos de servicios</h2>
+                                                <div class="catalogo">
+                                                    <div class="catalogo_superior">
+                                                        <div class="servicios">
+                                                            <h3>Cortes</h3>
+                                                            <img src="{% static 'imagenes/Corte.jpg' %}"  alt="My image">
+                                                            <div class="contenido-servicio">
+                                                                <a href="/Cortes" class="boton boton-gris">Ver más</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="servicios">
+                                                            <h3>tintes</h3>
+                                                            <img src="{% static 'imagenes/Tintes.jpg' %}" alt="My image">
+                                                            <div class="contenido-servicio">
+                                                                <a href="/Tintes" class="boton boton-gris">Ver más</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="servicios">
+                                                            <h3>alisados</h3>
+                                                            <img src="{% static 'imagenes/Alisado.jpg' %}"  alt="My image">
+                                                            <div class="contenido-servicio">
+                                                                <a href="/Alisados" class="boton boton-gris">Ver más</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="catalogo_inferior">
+                                                        <div class="servicios">
+                                                            <h3>Peinados</h3> 
+                                                            <img src="{% static 'imagenes/Peinado.jpg' %}"  alt="My image"> 
+                                                            <div class="contenido-servicio">
+                                                                <a href="/Peinados" class="boton boton-gris">Ver más</a>   
+                                                            </div>         
+                                                        </div>
+                                                        <div class="servicios ">
+                                                            <h3>Lavados y cortes</h3> 
+                                                            <img src="{% static 'imagenes/Lavado.jpg' %}"  alt="My image">
+                                                            <div class="contenido-servicio">
+                                                                <a href="/Lavados" class="boton boton-gris">Ver más</a>    
+                                                            </div>   
+                                                        </div>
+                                                        <div class="servicios">
+                                                            <h3>Afeitado</h3> 
+                                                            <img src="{% static 'imagenes/Afeitado.jpg' %}"  alt="My image">
+                                                            <div class="contenido-servicio">
+                                                                <a href="/Afeitado" class="boton boton-gris">Ver más</a>    
+                                                            </div>   
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </section>
+
+                                    </main>
+                            
+                        {% endif %}
+                {% endif %}       
+            {% endblock %}
+        
