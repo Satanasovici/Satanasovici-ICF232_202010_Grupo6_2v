@@ -11,6 +11,7 @@ from django.utils import timezone, dateformat
 from django.db.models import Count
 from django.http import JsonResponse
 from django.contrib.auth.models import User
+from datetime import timedelta
 
 
 def Editar_Perfil(request):
@@ -183,6 +184,47 @@ def hora_confirmada (request, cod, cod2):
 def reservarHora (request):
 
     return redirect( '/' )
+
+
+
+def poblar_horas(request):
+
+    horario = horas_peluqueria.objects.all()
+    fecha_p = fecha.objects.all()
+    peluquero = peluqueros.objects.all()
+    hora_peluquero = peluquero_horas.objects.all()
+    
+
+    
+    for dia in fecha_p:
+        for hora in horario:
+            if hora.id_hora % 2 != 0:
+                for peluquero_p in peluquero:
+
+                    peluquero_horas.objects.create(
+                        id_peluquero_h = peluqueros.objects.get(pk=peluquero_p.rut_usuario),
+                        id_horas_h = horas_peluqueria.objects.get(pk=hora.id_hora),
+                        id_fecha_h = fecha.objects.get(pk=dia.id_fecha)
+                    )
+                    #peluquero_horas.save()
+    
+                
+    return redirect( '/' )
+
+def poblar_fechas(request):
+
+    fecha_p = fecha.objects.all()
+    
+    for fechas in fecha_p:
+        f = fechas.fecha
+    fecha.objects.create(
+        fecha = f + timedelta(days = 1)
+    )
+
+  #  if f == date.today():
+  #      f = 1
+                
+    return HttpResponse( "completado" )
 
 
 

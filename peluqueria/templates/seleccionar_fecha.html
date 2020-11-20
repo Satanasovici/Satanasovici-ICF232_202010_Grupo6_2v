@@ -5,7 +5,7 @@
 
     {% block content %}
 
-   
+    
 
             <div id="calendar"  style="padding: 50px; background-color: rgb(54, 54, 54); color: white">
 
@@ -20,12 +20,24 @@
   document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
-  var calendar = new FullCalendar.Calendar(calendarEl, {
+  var calendar = new FullCalendar.Calendar(calendarEl,{
+
+
 
     selectable: true,
     dateClick: function(info) {
       alert('clicked ' + info.dateStr);
     },
+
+        events: [
+        {% for fechas in fechas_peluqueria %}
+          {
+              title: " Haz click en la casilla ",
+              start: '{{ fechas.fecha | date:"Y-m-d"}}',
+              end: '{{ fechas.fecha | date:"Y-m-d"}}',
+          },
+        {% endfor %}
+    ]
   
 
   });
