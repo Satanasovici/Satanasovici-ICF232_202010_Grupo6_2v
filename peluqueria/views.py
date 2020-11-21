@@ -193,23 +193,35 @@ def poblar_horas(request):
     fecha_p = fecha.objects.all()
     peluquero = peluqueros.objects.all()
     hora_peluquero = peluquero_horas.objects.all()
-    
+    cantidad_peluqueros = 0
+    cantidad_fechas = 0
+    cantidad = 0
 
+    for peluquero_p in peluquero:
+        cantidad_peluqueros= cantidad_peluqueros + 1
     
+    for fecha_id in hora_peluquero:
+        cantidad_fechas = cantidad_fechas + 1
+
     for dia in fecha_p:
         for hora in horario:
-            if hora.id_hora % 2 != 0:
-                for peluquero_p in peluquero:
-
+           if hora.id_hora % 2 != 0:
+               for peluquero_p in peluquero:
+                    #for fecha_id in hora_peluquero:
+                      #  if dia.id_fecha == fecha_id.id_fecha_h and :
+                       #     cantidad = cantidad + 1
+                       # else:
                     peluquero_horas.objects.create(
                         id_peluquero_h = peluqueros.objects.get(pk=peluquero_p.rut_usuario),
                         id_horas_h = horas_peluqueria.objects.get(pk=hora.id_hora),
                         id_fecha_h = fecha.objects.get(pk=dia.id_fecha)
                     )
+                     #       cantidad = 0
                     #peluquero_horas.save()
+    return HttpResponse( "Listo" )
+                    
+   # return redirect( '/' )
     
-                
-    return redirect( '/' )
 
 def poblar_fechas(request):
 
