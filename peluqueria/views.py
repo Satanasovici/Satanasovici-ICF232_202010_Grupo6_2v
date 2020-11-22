@@ -7,6 +7,7 @@ from django.contrib.auth import logout as do_logout
 from .models import Peluquero_info, servicios, peluqueros, peluqueros_servicios, peluquero_horas, horas_peluqueria, fecha, reserva, cliente, estado_reserva
 from datetime import date
 from datetime import datetime
+from datetime import time
 from django.utils import timezone, dateformat
 from django.db.models import Count
 from django.http import JsonResponse
@@ -131,7 +132,8 @@ def seleccionar_hora (request,cod,cod2,cod3):
    
     horas = peluquero_horas.objects.all()
     horario = horas_peluqueria.objects.all()
-    
+    disponible = datetime.now().strftime('%H:%M')
+    #disponible = '18:15'
     
 
     return render (request, "ver_horas.html", {
@@ -139,7 +141,8 @@ def seleccionar_hora (request,cod,cod2,cod3):
         'cod':cod,
         'cod2':cod2,
         'cod3':cod3,
-        'horario':horario
+        'horario':horario,
+        'disponible':disponible
     })
 
 
@@ -148,8 +151,10 @@ def seleccionar_hora (request,cod,cod2,cod3):
 def seleccionar_fecha (request, cod, cod2):
 
     fechas_peluqueria = fecha.objects.all()
-
+    
     hoy = date.today()
+    
+    #x = datetime.now().strftime('%H:%M')
     #return HttpResponse(x)
     return render(request, "seleccionar_fecha.html",{ 
         'fechas_peluqueria':fechas_peluqueria,
@@ -157,6 +162,12 @@ def seleccionar_fecha (request, cod, cod2):
         'cod2':cod2,
         'hoy':hoy
     })
+   # f = 0
+   # g = '10:07'
+   # if x < g:
+   #     f = 1
+
+    #return HttpResponse (f)
     
 
 
@@ -293,3 +304,10 @@ def ver_reservas(request):
     })
 
 
+
+
+def pago_paypal(request):
+
+    
+
+    return render(request, "paypal.html")

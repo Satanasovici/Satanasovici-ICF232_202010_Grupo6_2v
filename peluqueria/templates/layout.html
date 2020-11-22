@@ -45,9 +45,11 @@
                 {% if perms.users.view_cliente %}
                     {% if perms.users.view_peluquero %}  
                         <nav class="navegador_informacion">
-                            <a href="/prueba">Añadir Peluquero</a>
-                            <a href="/Contacto">Calendario</a>
-                            <a href="/poblar">Poblar horas</a>
+                            <a href="/prueba">Ver usuarios registrados</a>
+                            <a href="/prueba">Ver Peluqueros</a>
+                            <a href="/Contacto">Contacto</a>
+                            <a href="/Contacto">Ver Reservas</a>
+                            <a href="/poblar">Agregar horas</a>
                             <a href="/fechas">Agregar Fecha</a>
                         </nav> 
                     {% endif %} 
@@ -64,8 +66,8 @@
                         {% if perms.users.view_peluquero %}
                             <nav class="navegador_informacion">
                                 <a href="/prueba">Quiénes somos</a>
-                                <a href="/Contacto">Calendario</a>
-                                <a href="/prueba">Dirección</a>
+                                <a href="/Contacto">Próximas reservas</a>
+                                <a href="/prueba">Contacto</a>
                                 <a href="/Profesionales">Servicios realizados</a>
                             </nav> 
                         {% else %} 
@@ -73,7 +75,6 @@
                                 <a href="/prueba">Quiénes somos</a>
                                 <a href="/Contacto">Contacto</a>
                                 <a href="/prueba">Dirección</a>
-                                <a href="/reservas">Reservas</a>
                                 <a href="/Profesionales">Profesionales</a>
                             </nav>       
                         {% endif %}  
@@ -99,6 +100,26 @@
     </div>
 
     
+
+    <footer class = "pie_pagina ">
+       
+      
+
+            <h2 class="encabezado-footer"></h2>
+
+
+            
+        </div>        
+        
+    </footer>
+
+
+
+
+
+
+
+
 
 
 </body>

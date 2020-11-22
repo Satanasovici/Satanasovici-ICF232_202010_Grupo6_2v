@@ -16,11 +16,12 @@
                                     
                                     <table class="table">
                                         <tr>
-                                            <th class="fila_profesionales">Fecha</th>
-                                            <th class="fila_profesionales"> Cliente</th>
-                                            <th class="fila_profesionales">Servicio</th>
-                                            <th class="fila_profesionales">hora</th>
-                                            <th class="fila_profesionales">Peluquero</th>    
+                                            <th class="fila_profesionales color_letra">Fecha</th>
+                                            <th class="fila_profesionales color_letra"> Cliente</th>
+                                            <th class="fila_profesionales color_letra">Servicio</th>
+                                            <th class="fila_profesionales color_letra">hora</th>
+                                            <th class="fila_profesionales color_letra">Peluquero</th>   
+                                            <th class="fila_profesionales color_letra">Estado de reserva</th> 
                                         </tr>
                                     
                                         {% for p in datos %}
@@ -38,6 +39,7 @@
                                                                                     {% if pl.rut_usuario == p.id_peluquero_r_id %}
                                                                                         {% for n in nombre %}
                                                                                             {% if pl.id_usuario_p_id == n.id %}
+                                                                                            
                                                                                                 <tr>
                                                                                                     <td class="fila_profesionales">{{ f.fecha | date:"d-m-Y" }}</td>
                                                                                                     <td class="fila_profesionales">{{ clientes.rut_cliente }}</td>

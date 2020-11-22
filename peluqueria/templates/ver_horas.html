@@ -18,17 +18,16 @@
                                 {% for hora_peluqueria in horario %}
                                     {% if hora.id_horas_h_id == hora_peluqueria.id_hora %}
                                         {% if hora_peluqueria.id_estado_id == 1 %}
-                                            
-                                            <div class="servicios color_letra fondo-gris ">
-                                                <li>disponible</li>
-                                                <a href="/confirmHora/{{hora.id}}/{{hora_peluqueria.id_hora}}/{{cod3}}" > {{hora_peluqueria.hora_inicio}} </a>
-                                            </div>
+                                            {% if disponible < hora_peluqueria.hora_inicio   %}
+                                                <div class="servicios color_letra fondo-gris ">
+                                                    <li>disponible</li>
+                                                    <a href="/confirmHora/{{hora.id}}/{{hora_peluqueria.id_hora}}/{{cod3}}" > {{hora_peluqueria.hora_inicio}} </a>
+                                                </div>
+                                                
+                                            {% endif %}
                                         {% endif %}
 
-                                        {% if hora_peluqueria.id_estado_id == 2 %}
-                                            <li>NO DISPONIBLE</li>
-                                            <a href=""> {{hora_peluqueria.hora_inicio}} </a>
-                                        {% endif %}
+                                        
 
                                     {% endif %}
                                 {% endfor %}
@@ -38,6 +37,9 @@
 
                     {% endfor %}
  
+                </div>
+                <div class="espacio_abajo">
+
                 </div>
 
         </section>
