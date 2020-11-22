@@ -29,11 +29,15 @@
 
     events: [
     {% for fechas in fechas_peluqueria %}
-      {
-          title: " Haz click en la casilla ",
-          start: '{{ fechas.fecha | date:"Y-m-d"}}',
-          end: '{{ fechas.fecha | date:"Y-m-d"}}',
-      },
+      {% if  fechas.fecha >= hoy%}
+        
+          {
+              title: " Haz click en la casilla ",
+              start: '{{ fechas.fecha | date:"Y-m-d"}}',
+              end: '{{ fechas.fecha | date:"Y-m-d"}}',
+          },
+          
+      {% endif %}
     {% endfor %}
     ],
 
@@ -44,7 +48,7 @@
       {% for fechas in fechas_peluqueria %}
         if (info.dateStr == '{{ fechas.fecha | date:"Y-m-d"}}')
           
-            location.href="/selectHora/{{cod}}/{{fechas.id_fecha}} "
+            location.href="/selectHora/{{cod}}/{{fechas.id_fecha}}/{{cod2}} "
               
       {% endfor %}
     },

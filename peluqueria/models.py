@@ -94,7 +94,7 @@ class estado_reserva (models.Model):
 
 class reserva (models.Model):
 
-    id_reserva_r = models.IntegerField(primary_key=True)
+    id_reserva_r = models.AutoField(primary_key=True)
     id_cliente_r = models.ForeignKey(cliente,on_delete=models.CASCADE)
     id_estado_r = models.ForeignKey(estado_reserva, on_delete=models.CASCADE)
     id_hora_r = models.ForeignKey(horas_peluqueria, on_delete=models.CASCADE)

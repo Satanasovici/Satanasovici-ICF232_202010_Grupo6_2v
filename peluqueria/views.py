@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as do_login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import logout as do_logout
-from .models import Peluquero_info, servicios, peluqueros, peluqueros_servicios, peluquero_horas, horas_peluqueria, fecha
+from .models import Peluquero_info, servicios, peluqueros, peluqueros_servicios, peluquero_horas, horas_peluqueria, fecha, reserva, cliente, estado_reserva
 from datetime import date
 from datetime import datetime
 from django.utils import timezone, dateformat
@@ -92,6 +92,7 @@ def informacion_peluqueria(request):
         return render(request, "informacion_peluqueria.html")
     return redirect('/')  
 
+
 def agenda(request):
     if request.user.is_authenticated:
         horario = Peluquero_info.objects.all()
@@ -125,7 +126,7 @@ def seleccionar_peluquero (request, cod):
     })
 
 
-def seleccionar_hora (request,cod,cod2):
+def seleccionar_hora (request,cod,cod2,cod3):
 
    
     horas = peluquero_horas.objects.all()
@@ -137,26 +138,31 @@ def seleccionar_hora (request,cod,cod2):
         'horas':horas,
         'cod':cod,
         'cod2':cod2,
+        'cod3':cod3,
         'horario':horario
     })
 
 
 
 
-def seleccionar_fecha (request, cod):
+def seleccionar_fecha (request, cod, cod2):
 
     fechas_peluqueria = fecha.objects.all()
-    
+
+    hoy = date.today()
+    #return HttpResponse(x)
     return render(request, "seleccionar_fecha.html",{ 
         'fechas_peluqueria':fechas_peluqueria,
-        'cod':cod
+        'cod':cod,
+        'cod2':cod2,
+        'hoy':hoy
     })
     
 
 
 
 
-def confirmar_hora (request, cod, cod2):
+def confirmar_hora (request, cod, cod2, cod3):
 
 
     horario = horas_peluqueria.objects.all()
@@ -164,20 +170,43 @@ def confirmar_hora (request, cod, cod2):
     return render(request, "confirmar_hora.html",{ 
         'cod2':cod2,
         'cod':cod,
+        'cod3':cod3,
         'horario':horario
     })
     
 
-def hora_confirmada (request, cod, cod2):
+def hora_confirmada (request, cod, cod2, cod3 ):
 
 
     cod2 = cod2 + 1
     hora_peluquero = peluquero_horas.objects.get(pk = cod)
     hora = horas_peluqueria.objects.get(pk = cod2)
     hora_peluquero.id_horas_h = horas_peluqueria.objects.get(pk = cod2)
+    Usuario = request.user.id
+    clientes = cliente.objects.get(id_usuario_c = Usuario)
     hora_peluquero.save()
 
-    return redirect ('/')
+    reserva.objects.create(
+
+        id_cliente_r = cliente.objects.get(id_usuario_c = Usuario),
+        id_estado_r = estado_reserva.objects.get(id_estado_reserva = 1),
+        id_hora_r = horas_peluqueria.objects.get(pk = cod2),
+        id_servicio_r = servicios.objects.get(pk = cod3),
+        id_fecha_r = hora_peluquero.id_fecha_h,
+        id_peluquero_r = hora_peluquero.id_peluquero_h 
+    )
+
+
+   # peluquero_horas.objects.create(
+   #     id_peluquero_h = peluqueros.objects.get(pk=peluquero_p.rut_usuario),
+   #     id_horas_h = horas_peluqueria.objects.get(pk=hora.id_hora),
+   #     id_fecha_h = fecha.objects.get(pk=dia.id_fecha)
+   # )
+
+
+
+
+    return redirect ( '/' )
 
 
 
@@ -198,13 +227,6 @@ def poblar_horas(request):
     cantidad = 0
     respuesta = 0
     acum = 0
-    #respuesta2 = 0
-
-   # for peluquero_p in peluquero:
-  #      cantidad_peluqueros= cantidad_peluqueros + 1
-    
- #   for fecha_id in hora_peluquero:
- #       cantidad_fechas = cantidad_fechas + 1
 
     for dia in fecha_p:
         
@@ -230,8 +252,7 @@ def poblar_horas(request):
             respuesta = 0
     return HttpResponse( "Listo" )
                 
-   # return redirect( '/' )
-    
+
 
 def poblar_fechas(request):
 
@@ -243,10 +264,32 @@ def poblar_fechas(request):
         fecha = f + timedelta(days = 1)
     )
 
-  #  if f == date.today():
-  #      f = 1
-                
     return HttpResponse( "completado" )
 
+
+
+def ver_reservas(request):
+
+    datos = reserva.objects.all()
+    Usuario = request.user.id
+    clientes = cliente.objects.get(id_usuario_c = Usuario)
+    fechas = fecha.objects.all()
+    peluquero = peluqueros.objects.all()
+    horas = horas_peluqueria.objects.all()
+    servicio = servicios.objects.all()
+    nombre = User.objects.all()
+
+   # datos_reserva = reserva.objects.get(id_cliente_r = clientes)
+    
+
+    return render(request, "ver_reservas.html",{ 
+        'datos':datos,
+        'clientes':clientes,
+        'fechas':fechas,
+        'peluquero':peluquero,
+        'horas':horas,
+        'servicio':servicio,
+        'nombre':nombre
+    })
 
 

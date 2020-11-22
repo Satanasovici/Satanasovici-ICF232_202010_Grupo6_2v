@@ -4,6 +4,7 @@
 
     {% block content %}
 
+    <h2>{{ cod }}</h2>
     <main>
         <section class="Barra_contenedor seccion">
             <h2 class="encabezado-servicios">Selecciona un peluquero</h2>
@@ -21,7 +22,7 @@
                                                     <img src="{% static 'imagenes/peluquero.jpg' %}" alt="My image">
                                                     <div class="contenido-servicio">
                                                         {% if request.user.is_authenticated %}
-                                                            <a href="/seleccionar_fecha/{{peluquero.rut_usuario_p_id}}" class="boton">Seleccionar</a>
+                                                            <a href="/seleccionar_fecha/{{peluquero.rut_usuario_p_id}}/{{cod}}" class="boton">Seleccionar</a>
                                                         {% else %}
                                                             <a  href="/Login" class="boton">Debes iniciar sesión</a> 
                                                         {% endif %}
