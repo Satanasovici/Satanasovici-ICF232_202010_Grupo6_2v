@@ -4,8 +4,8 @@
 
 
             {% block content %}
-                {% if perms.users.view_cliente %} 
-                    {% if perms.users.view_peluquero %}
+                
+                    {% if perms.users.staff  %}
                         <main>
                             <section class="Barra_contenedor seccion">
 
@@ -61,7 +61,7 @@
                             </section>
 
                         </main>
-                    {% endif %}
+                    
                     {% else %}
                         {% if perms.users.view_peluquero %} 
                             <main>
@@ -78,9 +78,8 @@
                                     </div>
                                 </div>
                             </main>
-
-                            {% else %}
-
+                        {% else %}
+                            {% if perms.users.view_cliente %} 
                                     <main>
                                         <section class="Barra_contenedor seccion">
 
@@ -137,7 +136,8 @@
 
                                     </main>
                             
-                        {% endif %}
-                {% endif %}       
+                            {% endif %}
+                        {% endif %}       
+                    {% endif %} 
             {% endblock %}
         

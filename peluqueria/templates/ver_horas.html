@@ -9,8 +9,7 @@
             <h2 class="encabezado-servicios">Selecciona una hora</h2>
                 <div class="catalogo_superior">
 
-               
-            
+                    
                     {% for hora in horas %}
 
                         {% if cod2 == hora.id_peluquero_h_id %}
@@ -18,17 +17,25 @@
                                 {% for hora_peluqueria in horario %}
                                     {% if hora.id_horas_h_id == hora_peluqueria.id_hora %}
                                         {% if hora_peluqueria.id_estado_id == 1 %}
-                                            {% if disponible < hora_peluqueria.hora_inicio   %}
-                                                <div class="servicios color_letra fondo-gris ">
-                                                    <li>disponible</li>
-                                                    <a href="/confirmHora/{{hora.id}}/{{hora_peluqueria.id_hora}}/{{cod3}}" > {{hora_peluqueria.hora_inicio}} </a>
-                                                </div>
-                                                
-                                            {% endif %}
+                                            {% for fecha in fechas %}
+                                                {% if fecha.id_fecha == cod %}  
+                                                    {% if hoy == fecha.fecha %} 
+                                                        {% if disponible < hora_peluqueria.hora_inicio   %}                                           
+                                                                <div class="servicios color_letra fondo-gris ">
+                                                                    <li>disponible</li>
+                                                                    <a href="/confirmHora/{{hora.id}}/{{hora_peluqueria.id_hora}}/{{cod3}}" > {{hora_peluqueria.hora_inicio}} </a>
+                                                                </div>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        <div class="servicios color_letra fondo-gris ">
+                                                            <li>disponible</li>
+                                                            <a href="/confirmHora/{{hora.id}}/{{hora_peluqueria.id_hora}}/{{cod3}}" > {{hora_peluqueria.hora_inicio}} </a>
+                                                        </div>      
+                                                       
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
                                         {% endif %}
-
-                                        
-
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}

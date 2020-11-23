@@ -42,8 +42,9 @@
                     </a>
                     
                 </div>
-                {% if perms.users.view_cliente %}
-                    {% if perms.users.view_peluquero %}  
+                
+                {% if perms.users.staff  %}
+                   
                         <nav class="navegador_informacion">
                             <a href="/prueba">Ver usuarios registrados</a>
                             <a href="/prueba">Ver Peluqueros</a>
@@ -52,14 +53,12 @@
                             <a href="/poblar">Agregar horas</a>
                             <a href="/fechas">Agregar Fecha</a>
                         </nav> 
-                    {% endif %} 
                 {% else %}
                     {% if perms.users.view_cliente %}
                         <nav class="navegador_informacion">
                             <a href="/prueba">Quiénes somos</a>
                             <a href="/Contacto">Contacto</a>
-                            <a href="/prueba">Dirección</a>
-                            <a href="/Profesionales">Reservas</a>
+                            <a href="/reservas">Reservas</a>
                             <a href="/Profesionales">Profesionales</a>
                         </nav>  
                     {% else %}  
@@ -73,7 +72,7 @@
                         {% else %} 
                             <nav class="navegador_informacion">
                                 <a href="/prueba">Quiénes somos</a>
-                                <a href="/Contacto">Contacto</a>
+                                <a href="/reservas">Contacto</a>
                                 <a href="/prueba">Dirección</a>
                                 <a href="/Profesionales">Profesionales</a>
                             </nav>       

@@ -129,10 +129,14 @@ def seleccionar_peluquero (request, cod):
 
 def seleccionar_hora (request,cod,cod2,cod3):
 
+    
+
    
     horas = peluquero_horas.objects.all()
     horario = horas_peluqueria.objects.all()
     disponible = datetime.now().strftime('%H:%M')
+    hoy = date.today()
+    fechas = fecha.objects.all()
     #disponible = '18:15'
     
 
@@ -142,7 +146,9 @@ def seleccionar_hora (request,cod,cod2,cod3):
         'cod2':cod2,
         'cod3':cod3,
         'horario':horario,
-        'disponible':disponible
+        'disponible':disponible,
+        'hoy':hoy,
+        'fechas':fechas
     })
 
 
@@ -178,11 +184,18 @@ def confirmar_hora (request, cod, cod2, cod3):
 
     horario = horas_peluqueria.objects.all()
 
+    dato_precio = servicios.objects.get(pk=cod3)
+    precio = dato_precio.precio_servicio
+    dolar = precio/765
+    dolar = int(dolar)
+    #return HttpResponse (dolar)
+
     return render(request, "confirmar_hora.html",{ 
         'cod2':cod2,
         'cod':cod,
         'cod3':cod3,
-        'horario':horario
+        'horario':horario,
+        'dolar':dolar
     })
     
 
