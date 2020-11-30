@@ -4,84 +4,86 @@
 
 
             {% block content %}
-            <main>
-                <section class="Barra_contenedor seccion">
-        
-                    <h2 class="encabezado-servicios">Información peluquería</h2>
-                        <div class="catalogo">
-                            <div class="catalogo_superior">
-                                <div class="informacion_contacto">
+            
+            
+            
+                <main>
+                    <section class="Barra_contenedor seccion">
+            
+                        <h2 class="encabezado-servicios">Información peluquería</h2>
+                            <div class="catalogo">
+                                <div class="catalogo_superior">
+                                    <div class="informacion_contacto">
 
-                                    <h1>{{datetime.now}}</h1>
-                                    
-                                    <table class="table">
-                                        <tr>
-                                            <th class="fila_profesionales color_letra">Fecha</th>
-                                            <th class="fila_profesionales color_letra"> Cliente</th>
-                                            <th class="fila_profesionales color_letra">Servicio</th>
-                                            <th class="fila_profesionales color_letra">hora</th>
-                                            <th class="fila_profesionales color_letra">Peluquero</th>   
-                                            <th class="fila_profesionales color_letra">Estado de reserva</th> 
-                                        </tr>
-                                    
-                                        {% for p in datos %}
-                                            
-                                            {% if clientes.rut_cliente == p.id_cliente_r_id %}
-                                                {% for f in fechas %}
-                                                    {% if f.id_fecha == p.id_fecha_r_id %}
-                                                        {% for s in servicio %}
-                                                            {% if s.id_servicios == p.id_servicio_r_id%}
-                                                                {% for h in horas %}
-                                                                    {% if h.id_hora == p.id_hora_r_id%}
-                                                                        {% for pl in peluquero %}
-                                                                            {% if pl.rut_usuario == p.id_peluquero_r_id %}
-                                                                                {% for pl in peluquero %}
-                                                                                    {% if pl.rut_usuario == p.id_peluquero_r_id %}
-                                                                                        {% for n in nombre %}
-                                                                                            {% if pl.id_usuario_p_id == n.id %}
-                                                                                            
-                                                                                                <tr>
-                                                                                                    <td class="fila_profesionales">{{ f.fecha | date:"d-m-Y" }}</td>
-                                                                                                    <td class="fila_profesionales">{{ clientes.rut_cliente }}</td>
-                                                                                                    <td class="fila_profesionales">{{ s.nombre }}</td>
-                                                                                                    <td class="fila_profesionales">{{ h.hora_inicio }}</td>
-                                                                                                    <td class="fila_profesionales">{{ n.first_name}} {{ n.last_name }}</td>
-                                                                                                                                                                                        
-                                                                                                </tr>
-                                                                                            {% endif %}
-                                                                                        {% endfor %}
-                                                                                    {% endif %}
-                                                                                {% endfor %}
-                                                                            {% endif %}
-                                                                        {% endfor %}
-                                                                    {% endif %}
-                                                                {% endfor %}
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    {% endif %}
-                                                {% endfor %}
-                                            {% endif %}
-                                    
-                                    
-                                        {% endfor %}
-                                    
-                                    
-                                    </table>
-                                    
-                                    <hr/>
-                                    
-                                    <a href="/prueba"><input type="button" value="volver" class="btn btn-info"></a>
-        
-        
+                                        <h1>{{datetime.now}}</h1>
+                                        
+                                        <table class="table">
+                                            <tr>
+                                                <th class="fila_profesionales color_letra">Fecha</th>
+                                                <th class="fila_profesionales color_letra"> Cliente</th>
+                                                <th class="fila_profesionales color_letra">Servicio</th>
+                                                <th class="fila_profesionales color_letra">Hora</th>
+                                                <th class="fila_profesionales color_letra">Peluquero</th>   
+                                                <th class="fila_profesionales color_letra">Estado de reserva</th> 
+                                            </tr>
+                                        
+                                            {% for p in datos %}
+                                                
+                                                {% if clientes.rut_cliente == p.id_cliente_r_id %}
+                                                    {% for f in fechas %}
+                                                        {% if f.id_fecha == p.id_fecha_r_id %}
+                                                            {% for s in servicio %}
+                                                                {% if s.id_servicios == p.id_servicio_r_id%}
+                                                                    {% for h in horas %}
+                                                                        {% if h.id_hora == p.id_hora_r_id%}
+                                                                            {% for pl in peluquero %}
+                                                                                {% if pl.rut_usuario == p.id_peluquero_r_id %}
+                                                                                    {% for pl in peluquero %}
+                                                                                        {% if pl.rut_usuario == p.id_peluquero_r_id %}
+                                                                                            {% for n in nombre %}
+                                                                                                {% if pl.id_usuario_p_id == n.id %}
+                                                                                                
+                                                                                                    <tr>
+                                                                                                        <td class="fila_profesionales">{{ f.fecha | date:"d-m-Y" }}</td>
+                                                                                                        <td class="fila_profesionales">{{ clientes.rut_cliente }}</td>
+                                                                                                        <td class="fila_profesionales">{{ s.nombre }}</td>
+                                                                                                        <td class="fila_profesionales">{{ h.hora_inicio }}</td>
+                                                                                                        <td class="fila_profesionales">{{ n.first_name}} {{ n.last_name }}</td>
+                                                                                                                                                                                            
+                                                                                                    </tr>
+                                                                                                {% endif %}
+                                                                                            {% endfor %}
+                                                                                        {% endif %}
+                                                                                    {% endfor %}
+                                                                                {% endif %}
+                                                                            {% endfor %}
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                        
+                                        
+                                            {% endfor %}
+                                        
+                                        
+                                        </table>
+                                        
+                                        <hr/>
+                                        
+                                        <a href="/prueba"><input type="button" value="volver" class="btn btn-info"></a>
+            
+            
+                                        </div>
                                     </div>
-                                </div>
-                        </div>
-                </section>
-                
-                
-        
-            </main>
-
+                            </div>
+                    </section>
+                    
+                    
+            
+                </main>
             
 
             {% endblock %}

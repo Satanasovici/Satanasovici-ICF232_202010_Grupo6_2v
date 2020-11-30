@@ -13,6 +13,7 @@ from django.db.models import Count
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from datetime import timedelta
+from django.http import JsonResponse
 
 
 def Editar_Perfil(request):
@@ -53,12 +54,6 @@ def Peinados(request):
 
 
 
-def profesionales(request):
-    horario = Peluquero_info.objects.all()
-    data = {
-         'peluquero':horario
-    }
-    return render(request, "pagina_profesionales.html", data)
 
 
 def contacto(request):
@@ -110,6 +105,15 @@ def agenda(request):
 ############################################################################################################
     
 
+def profesionales(request):
+    personas = peluqueros.objects.all()
+    usuario = User.objects.all()
+  
+    return render(request, "pagina_profesionales.html",{
+        'personas':personas,
+        'usuario':usuario
+    })
+
 
 
 def seleccionar_peluquero (request, cod):
@@ -136,9 +140,7 @@ def seleccionar_hora (request,cod,cod2,cod3):
     horario = horas_peluqueria.objects.all()
     disponible = datetime.now().strftime('%H:%M')
     hoy = date.today()
-    fechas = fecha.objects.all()
-    #disponible = '18:15'
-    
+    fechas = fecha.objects.all()    
 
     return render (request, "ver_horas.html", {
         'horas':horas,
@@ -168,13 +170,7 @@ def seleccionar_fecha (request, cod, cod2):
         'cod2':cod2,
         'hoy':hoy
     })
-   # f = 0
-   # g = '10:07'
-   # if x < g:
-   #     f = 1
 
-    #return HttpResponse (f)
-    
 
 
 
@@ -220,17 +216,10 @@ def hora_confirmada (request, cod, cod2, cod3 ):
         id_peluquero_r = hora_peluquero.id_peluquero_h 
     )
 
-
-   # peluquero_horas.objects.create(
-   #     id_peluquero_h = peluqueros.objects.get(pk=peluquero_p.rut_usuario),
-   #     id_horas_h = horas_peluqueria.objects.get(pk=hora.id_hora),
-   #     id_fecha_h = fecha.objects.get(pk=dia.id_fecha)
-   # )
-
-
-
-
     return redirect ( '/' )
+
+
+
 
 
 
@@ -278,6 +267,8 @@ def poblar_horas(request):
                 
 
 
+
+
 def poblar_fechas(request):
 
     fecha_p = fecha.objects.all()
@@ -288,7 +279,7 @@ def poblar_fechas(request):
         fecha = f + timedelta(days = 1)
     )
 
-    return HttpResponse( "completado" )
+    return HttpResponse("Completado")
 
 
 
@@ -316,11 +307,73 @@ def ver_reservas(request):
         'nombre':nombre
     })
 
+    
+
+def seleccionar_fecha (request, cod, cod2):
+
+    fechas_peluqueria = fecha.objects.all()
+    
+    hoy = date.today()
+    
+    return render(request, "seleccionar_fecha.html",{ 
+        'fechas_peluqueria':fechas_peluqueria,
+        'cod':cod,
+        'cod2':cod2,
+        'hoy':hoy
+    })
+
+
+
+
+def total_reservas(request):
+
+    reservas = reserva.objects.all()
+    fechas_peluqueria = fecha.objects.all()
+
+    return render(request,"total_reservas.html",{
+        'reservas':reservas,
+        'fechas_peluqueria':fechas_peluqueria,
+        
+    })
+
+
+def ver_total_reservas(request, cod):
+
+
+    reservas = reserva.objects.all()
+
+
+
+    datos = reserva.objects.all()
+    clientes = cliente.objects.all()
+    fechas = fecha.objects.all()
+    peluquero = peluqueros.objects.all()
+    horas = horas_peluqueria.objects.all()
+    servicio = servicios.objects.all()
+    nombre = User.objects.all()
+
+
+
+
+
+
+    return render(request,"ver_total_reservas.html",{
+        'cod':cod,
+        'datos':datos,
+        'clientes':clientes,
+        'fechas':fechas,
+        'peluquero':peluquero,
+        'horas':horas,
+        'servicio':servicio,
+        'nombre':nombre
+    })
+
+
 
 
 
 def pago_paypal(request):
 
-    
-
     return render(request, "paypal.html")
+
+
