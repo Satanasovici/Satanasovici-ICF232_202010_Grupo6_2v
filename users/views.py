@@ -1,12 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as do_login
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth import logout as do_logout
+import random
+from django.contrib.auth.models import Group
+from django import http
 from .forms import UserDeleteForm
+from peluqueria.models import cliente
 from django.contrib import messages
-from .forms import CustomUserForm, EditProfileForm
+from django.contrib.auth.models import User
+from .forms import CustomUserForm, EditProfileForm, CustomClienteForm
 
 def welcome(request):
     return render(request, "welcome.html")
@@ -14,17 +19,35 @@ def welcome(request):
 
 def register(request):
     form = CustomUserForm()
+    Usuario = request.user.id
     if request.method == "POST":
         form = CustomUserForm(data=request.POST)
+        numero = random.randint(111111111,220000000)
+        numero2 = random.ranint(18,60)
         if form.is_valid():
-
             user = form.save()
-
             if user is not None:
                 do_login(request, user)
+                user.can_view_cliente = True
+                cliente.objects.create(
+                    id_usuario_c = User.objects.get(pk = request.user.id),
+                    edad = numero2,
+                    rut_cliente = numero
+                )
+                group = Group.objects.get(name='cliente')
+                user.groups.add(group)
+
                 return redirect('/prueba')
 
     return render(request, "register.html", {'form': form})
+
+
+
+
+
+
+
+
 
 
 
