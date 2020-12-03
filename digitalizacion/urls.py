@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from peluqueria.views import catalogo, perfil, informacion_peluqueria, agenda, index_prueba, Cortes, contacto, profesionales, Alisados, Tintes, Lavados, Peinados, Afeitados , Editar_Perfil, seleccionar_peluquero, seleccionar_hora, confirmar_hora, hora_confirmada, seleccionar_fecha, peluquero_horas, poblar_fechas, poblar_horas, ver_reservas, pago_paypal,total_reservas, ver_total_reservas
+from peluqueria.views import catalogo, perfil, informacion_peluqueria, agenda, index_prueba, Cortes, contacto, profesionales, Alisados, Tintes, Lavados, Peinados, Afeitados , Editar_Perfil, seleccionar_peluquero, seleccionar_hora, confirmar_hora, hora_confirmada, seleccionar_fecha, peluquero_horas, poblar_fechas, poblar_horas, ver_reservas, pago_paypal,total_reservas, ver_total_reservas, usuarios_clientes
 
 from users import views
 
@@ -34,7 +34,6 @@ urlpatterns = [
     path('configuracion', views.config),
     path('delete', views.deleteuser),
     path('informacion_peluqueria', informacion_peluqueria),
-    #path('BorrarCuenta', views.opcionesCuenta),
     path('modif', views.editProfile),
     path('password', views.changePassword),
     path('prueba', index_prueba),
@@ -47,12 +46,7 @@ urlpatterns = [
     path('Contacto', contacto),
     path('Profesionales', profesionales),
     #path('Quienes_somos', quienes_somos),
-    #path('Direccion', direccion),
-    #path('Servicios', servicios),
     path('Editar', Editar_Perfil),
-    #path('ingreso',ingreso_servicios_prueba),
-    #path('ingreso_horario',horarios_peluquero),
-    #path('ingreso_peluquero', usuario_peluquero),
     path('selectPeluquero/<int:cod>', seleccionar_peluquero),
     path('selectHora/<int:cod2>/<int:cod>/<int:cod3>', seleccionar_hora),
     path('confirmHora/<int:cod>/<int:cod2>/<int:cod3>', confirmar_hora),
@@ -64,6 +58,7 @@ urlpatterns = [
     path('pago',pago_paypal),
     path('total_reservas',total_reservas),
     path('ver_total_reservas/<int:cod>',ver_total_reservas),
+    path('Clientes',usuarios_clientes),
     
 
 

@@ -23,7 +23,7 @@ def register(request):
     if request.method == "POST":
         form = CustomUserForm(data=request.POST)
         numero = random.randint(111111111,220000000)
-        numero2 = random.ranint(18,60)
+        numero2 = random.randint(18,60)
         if form.is_valid():
             user = form.save()
             if user is not None:
@@ -37,7 +37,7 @@ def register(request):
                 group = Group.objects.get(name='cliente')
                 user.groups.add(group)
 
-                return redirect('/prueba')
+                return redirect('/')
 
     return render(request, "register.html", {'form': form})
 
@@ -96,7 +96,7 @@ def deleteuser(request):
         user = request.user
         user.delete()
         messages.info(request, 'Tu cuenta ha sido borrada.')
-        return redirect('/prueba')
+        return redirect('/')
     else:
         delete_form = UserDeleteForm(instance=request.user)
 
@@ -115,7 +115,7 @@ def editProfile(request):
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             user = form.save()
-            return redirect('/prueba')
+            return redirect('/')
     else:
         form = EditProfileForm(instance=request.user)
         return render(request, "Editar_Perfil.html", {'form': form})
@@ -127,7 +127,7 @@ def changePassword(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return redirect('/prueba')
+            return redirect('/')
         else:
             return redirect('/password')
     else:
@@ -161,7 +161,7 @@ def login(request):
                 
                 do_login(request, user)
                
-                return redirect('/prueba')
+                return redirect('/')
    
         # Si llegamos al final renderizamos el formulario
     return render(request, "pagina_iniciar_sesion.html", {'form': form})
@@ -170,4 +170,4 @@ def login(request):
 
 def logout(request):
     do_logout(request)
-    return redirect('/prueba')
+    return redirect('/')

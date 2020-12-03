@@ -6,43 +6,31 @@
             {% block content %}
 
 
-
-
-
-
     
             <main class="espacio">
 
 
-                <section class="Barra_contenedor seccion">
-
-                    <h2 class="encabezado-servicios"></h2>
-                        <div class="catalogo">
-                            <div class="catalogo_superior">
-                                <div class="diseño_login">
-                                    <div class="centrado"> 
-                                        
-
-                                        <h2>Registrar usuario</h2>
-
-                                        <form method="POST">
-                                            
-                                            {{ form.as_p }}
-                                            {% csrf_token %}
-                                            <button type="submit">Registrar</button>
-                                            
-                                        </form>
-                                    
-                                    
-                                    
-                                    </div>            
-                                </div>
+                <h2 class="encabezado-servicios">Registrar usuario</h2>
+                <div class="catalogo">
+                    <div class="catalogo_superior">
+                        <div class="servicios">
+                            <form class="box" method="POST">
                                 
-                            </div>
-                    </div>
-                </section>
+                                {{ form.as_p }}
+                                {% csrf_token %}
+                                <button type="submit">Registrar</button>
+                                
+                            </form>
+                                
+                        </div>   
+                                
+                    </div>               
+                            
+                </div>
 
-                {% endblock %}
+            </main>
+
+{% endblock %}
 
 
 

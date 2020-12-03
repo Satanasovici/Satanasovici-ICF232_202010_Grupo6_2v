@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+
+            {% block content %}
+
+            {% if perms.users.staff  %}
+
+                <main>
+                    <section class="Barra_contenedor seccion">
+            
+                        <h2 class="encabezado-servicios">Información Clientes</h2>
+                            <div class="catalogo">
+                                <div class="catalogo_superior">
+                                    <div class="informacion_contacto">
+                                        
+                                        <table class="table">
+                                            <tr>
+                                                <th class="fila_profesionales color_letra">Nombre</th>
+                                                <th class="fila_profesionales color_letra">Apellido</th>
+                                                <th class="fila_profesionales color_letra">Nombre de usuario</th>
+                                                <th class="fila_profesionales color_letra">Email</th>
+                                                    
+                                            </tr>
+                                        
+                                            {% for p in personas %}
+                                                {% for u in usuario %}
+                                                    {% if u.id == p.id_usuario_c_id %}
+                                                        <tr>
+                                                            <td class="fila_profesionales color_letra">{{ u.first_name}}</td>
+                                                            <td class="fila_profesionales color_letra">{{ u.last_name}}</td>
+                                                            <td class="fila_profesionales color_letra">{{ u.username}}</td>
+                                                            <td class="fila_profesionales color_letra">{{ u.email}}</td>
+                                                        </tr>
+                                                    {% endif %}
+                                        
+                                                {% endfor %}            
+                                            {% endfor %}
+                                        
+                                        
+                                        </table>
+                                        
+                                        <hr/>
+                                        
+                                        <a href="/"><input type="button" value="volver" class="btn btn-info"></a>
+            
+            
+                                        </div>
+                                    </div>
+                            </div>
+                    </section>
+                    
+                    
+            
+                </main>
+
+            {% else  %}
+            
+            <script>
+                location.href="/"
+            </script>
+
+            {% endif %}
+
+
+
+
+
+
+
+
+
+
+            
+            {% endblock %}

@@ -32,7 +32,7 @@
 
             <section class="barra_inferior">
                 <div class="peluqueria">
-                    <a href="/prueba">
+                    <a href="/">
                         {% if request.user.is_authenticated %}
                             <h1>Bienvenido a la Peluquería <b>{{request.user.first_name}}</b></h1>
                         {% else %}
@@ -46,7 +46,7 @@
                 {% if perms.users.staff  %}
                    
                         <nav class="navegador_informacion">
-                            <a href="/prueba">Ver usuarios registrados</a>
+                            <a href="/Clientes">Ver Clientes registrados</a>
                             <a href="/Profesionales">Ver Peluqueros</a>
                             <a href="/Contacto">Contacto</a>
                             <a href="/total_reservas">Ver Reservas</a>
@@ -56,7 +56,7 @@
                 {% else %}
                     {% if perms.users.view_cliente %}
                         <nav class="navegador_informacion">
-                            <a href="/prueba">Quiénes somos</a>
+                            <a href="/">Quiénes somos</a>
                             <a href="/Contacto">Contacto</a>
                             <a href="/reservas">Reservas</a>
                             <a href="/Profesionales">Profesionales</a>
@@ -64,14 +64,14 @@
                     {% else %}  
                         {% if perms.users.view_peluquero %}
                             <nav class="navegador_informacion">
-                                <a href="/prueba">Quiénes somos</a>
+                                <a href="/">Quiénes somos</a>
                                 <a href="/Contacto">Próximas reservas</a>
-                                <a href="/prueba">Contacto</a>
+                                <a href="/">Contacto</a>
                                 <a href="/Profesionales">Servicios realizados</a>
                             </nav> 
                         {% else %} 
                             <nav class="navegador_informacion">
-                                <a href="/prueba">Quiénes somos</a>
+                                <a href="/">Quiénes somos</a>
                                 <a href="/Contacto">Contacto</a>
                                 <a href="/Profesionales">Profesionales</a>
                             </nav>       
@@ -86,11 +86,19 @@
        
     </header>
 
+    {% if messages %}
+        <ul class="messages">
+               {% for message in messages %}
+                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+               {% endfor %}
+       </ul>
+    {% endif %}
+
     <div id = "content">
 
         
-            {% block content %}
-            {% endblock %}
+        {% block content %}
+        {% endblock %}
 
 
 
