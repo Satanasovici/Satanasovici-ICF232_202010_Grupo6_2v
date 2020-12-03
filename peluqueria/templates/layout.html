@@ -56,7 +56,7 @@
                 {% else %}
                     {% if perms.users.view_cliente %}
                         <nav class="navegador_informacion">
-                            <a href="/">Quiénes somos</a>
+                            <a href="/Quienes_somos">Quiénes somos</a>
                             <a href="/Contacto">Contacto</a>
                             <a href="/reservas">Reservas</a>
                             <a href="/Profesionales">Profesionales</a>
@@ -64,14 +64,14 @@
                     {% else %}  
                         {% if perms.users.view_peluquero %}
                             <nav class="navegador_informacion">
-                                <a href="/">Quiénes somos</a>
+                                <a href="/quienes_somos">Quiénes somos</a>
                                 <a href="/Contacto">Próximas reservas</a>
                                 <a href="/">Contacto</a>
                                 <a href="/Profesionales">Servicios realizados</a>
                             </nav> 
                         {% else %} 
                             <nav class="navegador_informacion">
-                                <a href="/">Quiénes somos</a>
+                                <a href="/quienes_somos">Quiénes somos</a>
                                 <a href="/Contacto">Contacto</a>
                                 <a href="/Profesionales">Profesionales</a>
                             </nav>       

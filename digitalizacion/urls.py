@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from peluqueria.views import catalogo, perfil, informacion_peluqueria, agenda, index_prueba, Cortes, contacto, profesionales, Alisados, Tintes, Lavados, Peinados, Afeitados , Editar_Perfil, seleccionar_peluquero, seleccionar_hora, confirmar_hora, hora_confirmada, seleccionar_fecha, peluquero_horas, poblar_fechas, poblar_horas, ver_reservas, pago_paypal,total_reservas, ver_total_reservas, usuarios_clientes
+from peluqueria.views import quienes_somos, catalogo, perfil, informacion_peluqueria, agenda, index_prueba, Cortes, contacto, profesionales, Alisados, Tintes, Lavados, Peinados, Afeitados , Editar_Perfil, seleccionar_peluquero, seleccionar_hora, confirmar_hora, hora_confirmada, seleccionar_fecha, peluquero_horas, poblar_fechas, poblar_horas, ver_reservas, pago_paypal,total_reservas, ver_total_reservas, usuarios_clientes
 
 from users import views
 
@@ -45,7 +45,7 @@ urlpatterns = [
     path('Peinados', Peinados),
     path('Contacto', contacto),
     path('Profesionales', profesionales),
-    #path('Quienes_somos', quienes_somos),
+    path('quienes_somos', quienes_somos),
     path('Editar', Editar_Perfil),
     path('selectPeluquero/<int:cod>', seleccionar_peluquero),
     path('selectHora/<int:cod2>/<int:cod>/<int:cod3>', seleccionar_hora),

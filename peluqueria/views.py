@@ -21,6 +21,8 @@ from django.contrib import messages
 def Editar_Perfil(request):
         return render(request, "Editar_Perfil.html")
 
+def quienes_somos(request):
+        return render(request, "pagina_quienes_somos.html")
 
 def index_prueba(request):
         return render(request, "index_prueba.html")
