@@ -136,6 +136,7 @@ def seleccionar_peluquero (request, cod):
             
         })
     else:
+        messages.success(request, 'Debes iniciar sesión')
         return redirect('/')
 
 
