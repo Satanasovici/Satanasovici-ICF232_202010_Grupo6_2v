@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+    {% block content %}
+
+
+        {% if perms.users.view_peluquero %}
+
+                    <div id="calendar"  style="padding: 50px; background-color: rgb(54, 54, 54); color: white">
+
+                    </div>
+                
+                    <script src="{% static 'Calendario/lib/main.js' %}"></script>
+                    <script>
+
+                    
+
+
+
+                document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+
+                var calendar = new FullCalendar.Calendar(calendarEl,{
+
+
+
+                    selectable: true,
+                    
+
+                    events: [
+                    {% for fechas in fechas_peluqueria %}
+                        {% for reserva in reservas %}
+                            {% if  fechas.id_fecha == reserva.id_fecha_r_id %} 
+                                {% if usuario_peluquero.rut_usuario == reserva.id_peluquero_r_id %}
+                                
+                                    {
+                                        title: " VER RESERVAS ",
+                                        start: '{{ fechas.fecha | date:"Y-m-d"}}',
+                                        end: '{{ fechas.fecha | date:"Y-m-d"}}',
+                                    },
+                                {% endif %}
+                                
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    ],
+
+                    
+                    
+                        
+                    dateClick: function(info) {
+                    {% for fechas in fechas_peluqueria %}
+                        if (info.dateStr == '{{ fechas.fecha | date:"Y-m-d"}}')
+                        
+                            location.href="/ver_reservas_peluquero/{{ fechas.id_fecha }}"
+                            
+                    {% endfor %}
+                    },
+                            
+
+                });
+
+                calendar.render();
+                });
+
+
+                
+
+                        </script>
+        {% else  %}
+            <script>
+                location.href="/"
+            </script>
+
+        {% endif %}
+
+    {% endblock %}

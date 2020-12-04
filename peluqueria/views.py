@@ -363,7 +363,7 @@ def total_reservas(request):
 
         return render(request,"total_reservas.html",{
             'reservas':reservas,
-            'fechas_peluqueria':fechas_peluqueria,
+            'fechas_peluqueria':fechas_peluqueria
             
         })
     else:
@@ -398,6 +398,90 @@ def ver_total_reservas(request, cod):
         })
     else:
         return redirect ('/')
+
+
+
+def fechas_peluquero(request):
+
+
+    if request.user.is_authenticated:
+
+        usuario = request.user.id
+        usuario_peluquero = peluqueros.objects.get(id_usuario_p=usuario)
+        reservas = reserva.objects.all()
+        fechas_peluqueria = fecha.objects.all()
+
+
+        return render(request,"fechas_peluquero.html",{
+            'reservas':reservas,
+            'fechas_peluqueria':fechas_peluqueria,
+            'usuario_peluquero':usuario_peluquero
+            
+        })
+    else:
+        return redirect ('/')
+
+
+def ver_reservas_peluquero(request, cod):
+
+    if request.user.is_authenticated:
+        datos = reserva.objects.all()
+        Usuario = request.user.id
+        peluquero = peluqueros.objects.get(id_usuario_p = Usuario)
+        fechas = fecha.objects.all()
+        clientes = cliente.objects.all()
+        horas = horas_peluqueria.objects.all()
+        servicio = servicios.objects.all()
+        nombre = User.objects.all()
+
+        return render(request, "reservas_peluquero.html",{ 
+            'cod':cod,
+            'datos':datos,
+            'peluquero':peluquero,
+            'fechas':fechas,
+            'clientes':clientes,
+            'horas':horas,
+            'servicio':servicio,
+            'nombre':nombre
+        })
+    else:
+        return redirect('/')
+
+
+
+
+def ver_reservas_hoy(request):
+
+    if request.user.is_authenticated:
+        datos = reserva.objects.all()
+        Usuario = request.user.id
+        peluquero = peluqueros.objects.get(id_usuario_p = Usuario)
+        fechas = fecha.objects.all()
+        clientes = cliente.objects.all()
+        horas = horas_peluqueria.objects.all()
+        servicio = servicios.objects.all()
+        nombre = User.objects.all()
+        hoy = date.today()
+        
+
+        return render(request, "reservas_hoy.html",{ 
+
+            'datos':datos,
+            'peluquero':peluquero,
+            'fechas':fechas,
+            'clientes':clientes,
+            'horas':horas,
+            'servicio':servicio,
+            'nombre':nombre,
+            'hoy':hoy
+            
+        })
+    else:
+        return redirect('/')
+
+
+
+
 
 
 

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from peluqueria.views import quienes_somos, catalogo, perfil, informacion_peluqueria, agenda, index_prueba, Cortes, contacto, profesionales, Alisados, Tintes, Lavados, Peinados, Afeitados , Editar_Perfil, seleccionar_peluquero, seleccionar_hora, confirmar_hora, hora_confirmada, seleccionar_fecha, peluquero_horas, poblar_fechas, poblar_horas, ver_reservas, pago_paypal,total_reservas, ver_total_reservas, usuarios_clientes
+from peluqueria.views import quienes_somos, catalogo, perfil, informacion_peluqueria, agenda, index_prueba, Cortes, contacto, profesionales, Alisados, Tintes, Lavados, Peinados, Afeitados , Editar_Perfil, seleccionar_peluquero, seleccionar_hora, confirmar_hora, hora_confirmada, seleccionar_fecha, peluquero_horas, poblar_fechas, poblar_horas, ver_reservas, pago_paypal,total_reservas, ver_total_reservas, usuarios_clientes,fechas_peluquero, ver_reservas_peluquero, ver_reservas_hoy
 
 from users import views
 
@@ -59,7 +59,9 @@ urlpatterns = [
     path('total_reservas',total_reservas),
     path('ver_total_reservas/<int:cod>',ver_total_reservas),
     path('Clientes',usuarios_clientes),
-    
+    path('fechas_peluquero', fechas_peluquero),
+    path('ver_reservas_peluquero/<int:cod>',ver_reservas_peluquero),
+    path('ver_reservas_hoy',ver_reservas_hoy),
 
 
     path('Login',views.login),
