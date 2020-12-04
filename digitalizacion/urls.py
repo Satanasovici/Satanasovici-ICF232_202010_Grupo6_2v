@@ -62,7 +62,5 @@ urlpatterns = [
     path('fechas_peluquero', fechas_peluquero),
     path('ver_reservas_peluquero/<int:cod>',ver_reservas_peluquero),
     path('ver_reservas_hoy',ver_reservas_hoy),
-
-
     path('Login',views.login),
 ]
