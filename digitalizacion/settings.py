@@ -81,7 +81,15 @@ WSGI_APPLICATION = 'digitalizacion.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'grupo06',
+        'USER': 'grupo06',
+        'PASSWORD': '198290300',
+        'DEFAULT-CHARACTER-SET': 'utf8',
+        'HOST': 'grupo06.c5d4mi2dthpc.us-east-1.rds.amazonaws.com',
+        'PORT' : '3306',
+        'TEST': {
+            'NAME': 'PELUQUERIA_TEST'
+        }
     }
 }
 
