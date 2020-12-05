@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+
+    {% block content %}
+
+    <main>
+        <section class="Barra_contenedor seccion">
+
+            <h2 class="encabezado-servicios">Información peluquería</h2>
+                <div class="catalogo">
+                    <div class="catalogo_superior">
+                        <div class="informacion_contacto">
+
+                            <h1>{{datetime.now}}</h1>
+                            
+                            <table class="table">
+                                <tr>
+                                    <th class="fila_profesionales color_letra">Fecha</th>
+                                    <th class="fila_profesionales color_letra"> Cliente</th>
+                                    <th class="fila_profesionales color_letra">Servicio</th>
+                                    <th class="fila_profesionales color_letra">Hora</th>
+                                    <th class="fila_profesionales color_letra">Peluquero</th>   
+
+                                </tr>
+                                
+                                {% for p in datos %}
+                                
+
+                                        {% for fecha in fechas %}
+                                            {% if fecha.fecha == hoy %}
+                                                {% if fecha.id_fecha == p.id_fecha_r_id %}                                          
+                                                    {% if peluquero.rut_usuario == p.id_peluquero_r_id %}  
+                                                        {% for hora in horas %}    
+                                                            {% if hora.id_hora == p.id_hora_r_id %} 
+                                                            
+                                                                {% for cliente in clientes %}
+                                                                    {% if cliente.rut_cliente == p.id_cliente_r_id %}  
+                                                                        {% for nombres in nombre %}
+                                                                            {% if nombres.id == cliente.id_usuario_c_id %}
+                                                                                {% for servicios in servicio %}
+                                                                                    {% if servicios.id_servicios == p.id_servicio_r_id %}
+                                                                                     
+                                                                                        <tr>
+                                                                                            <td class="fila_profesionales">{{ fecha.fecha | date:"d-m-Y" }}</td>
+                                                                                            <td class="fila_profesionales">{{ cliente.rut_cliente }}</td>
+                                                                                            <td class="fila_profesionales">{{ servicios.nombre }}</td>
+                                                                                            <td class="fila_profesionales">{{ hora.hora_inicio }}</td>
+                                                                                            <td class="fila_profesionales">{{ request.user.first_name }} {{ request.user.last_name }}</td>
+                                                                                            
+                                                                                                                                                                                
+                                                                                        </tr>
+                                                                                    {% endif %}
+                                                                                {% endfor %}
+
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                           
+                                {% endfor %}
+                            
+                            
+                            </table>
+                            
+                            <hr/>
+                            
+                            <a href="/total_reservas"><input type="button" value="volver" class="btn btn-info"></a>
+
+
+                            </div>
+                        </div>
+                </div>
+        </section>
+        
+        
+
+    </main>
+
+    {% endblock %}

@@ -1,4 +1,7 @@
+
 {% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +10,7 @@
     <title>Peluquería Rumps</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Calendario/lib/main.css' %}">
 
 
 </head>
@@ -16,11 +20,11 @@
             <div class="barra_superior">
                 <nav class="navegador_superior">
                     {% if request.user.is_authenticated %}
-                    <a href="/logout">Cerrar sesión</a>
-                    <a href="/perfil">Perfil de Usuario</a>
+                        <a href="/logout">Cerrar sesión</a>
+                        <a href="/perfil">Perfil de Usuario</a>
                     {% else %}   
-                    <a href="/Login">Iniciar sesión</a>
-                    <a href="registro">Registro</a> 
+                        <a href="/Login">Iniciar sesión</a>
+                        <a href="registro">Registro</a> 
                     {% endif %}
 
                 </nav>
@@ -28,36 +32,100 @@
 
             <section class="barra_inferior">
                 <div class="peluqueria">
-                    <a href="/prueba">
+                    <a href="/">
                         {% if request.user.is_authenticated %}
-                        <h1>Bienvenido a la Peluquería <b>{{request.user.username}}</b></h1>
+                            <h1>Bienvenido a la Peluquería <b>{{request.user.first_name}}</b></h1>
                         {% else %}
-                        <h1>Bienvenido a la Peluquería <b>{{request.user.username}}</b></h1>
+                         
+                        <h1>Bienvenido a la Peluquería <b>{{request.user.first_name}}</b></h1>
                         {% endif %}
-
                     </a>
                     
-                 </div>
-                    <nav class="navegador_informacion">
-                        <a href="/prueba">Quiénes somos</a>
-                        <a href="/Contacto">Contacto</a>
-                        <a href="/prueba">Dirección</a>
-                        <a href="/Profesionales">Profesionales</a>
-                        <a href="">Todos los servicios</a>
-                    </nav>
+                </div>
+                
+                {% if perms.users.staff  %}
+                   
+                        <nav class="navegador_informacion">
+                            <a href="/Clientes">Ver Clientes registrados</a>
+                            <a href="/Profesionales">Ver Peluqueros</a>
+                            <a href="/Contacto">Contacto</a>
+                            <a href="/total_reservas">Ver Reservas</a>
+                            <a href="/poblar">Agregar horas</a>
+                            <a href="/fechas">Agregar Fecha</a>
+                        </nav> 
+                {% else %}
+                    {% if perms.users.view_cliente %}
+                        <nav class="navegador_informacion">
+                            <a href="/quienes_somos">Quiénes somos</a>
+                            <a href="/Contacto">Contacto</a>
+                            <a href="/reservas">Reservas</a>
+                            <a href="/Profesionales">Profesionales</a>
+                        </nav>  
+                    {% else %}  
+                        {% if perms.users.view_peluquero %}
+                            <nav class="navegador_informacion">
+                                <a href="/quienes_somos">Quiénes somos</a>
+                                <a href="/fechas_peluquero">Ver calendario</a>
+                                <a href="/Contacto">Contacto</a>
+                                <a href="/Profesionales">Profesionales</a>
+                            </nav> 
+                        {% else %} 
+                            <nav class="navegador_informacion">
+                                <a href="/quienes_somos">Quiénes somos</a>
+                                <a href="/Contacto">Contacto</a>
+                                <a href="/Profesionales">Profesionales</a>
+                            </nav>       
+                        {% endif %}  
+                    {% endif %}  
+                {% endif %}          
+
             </section>    
+
                     
         </div>     
        
     </header>
 
+    {% if messages %}
+        <ul class="messages">
+               {% for message in messages %}
+                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+               {% endfor %}
+       </ul>
+    {% endif %}
+
     <div id = "content">
 
-        {% block content%}
-
+        
+        {% block content %}
         {% endblock %}
 
+
+
+
     </div>
+
+    
+
+    <footer class = "pie_pagina ">
+       
+      
+
+            <h2 class="encabezado-footer"></h2>
+
+
+            
+        </div>        
+        
+    </footer>
+
+
+
+
+
+
+
+
 
 
 </body>

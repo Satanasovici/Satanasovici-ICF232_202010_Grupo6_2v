@@ -1,84 +1,39 @@
+{% extends 'layout.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peluquería Rumps</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos_index.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
 
 
-</head>
-<body>
-    <header class="titulo">
-        <div class="Barra_contenedor">
-            <div class="barra_superior">
-                <nav class="navegador_superior">
-                    {% if request.user.is_authenticated %}
-                    <a href="/logout">Cerrar sesión</a>
-                    <a href="/perfil">Perfil de Usuario</a>
-                    {% else %}   
-                    <a href="/Login">Iniciar sesión</a>
-                    <a href="registro">Registro</a> 
-                    {% endif %}
-
-                </nav>
-            </div>
-
-            <section class="barra_inferior">
-                <div class="peluqueria">
-                    <a href="/prueba">
-                     <h1>Bienvenido a la Peluquería</h1>
-                    </a>
-                 </div>
-                    <nav class="navegador_informacion">
-                        <a href="/prueba">Quiénes somos</a>
-                        <a href="/Contacto">Contacto</a>
-                        <a href="/prueba">Dirección</a>
-                        <a href="/Profesionales">Profesionales</a>
-                        <a href="">Todos los servicios</a>
-                    </nav>
-            </section>    
-                    
-
-        </div>     
-       
-    </header>
-
+    {% block content %}
 
     <main>
         <section class="Barra_contenedor seccion">
 
-            <h2 class="encabezado-servicios">Información peluquería</h2>
+            <h2 class="encabezado-servicios">Información Peluqueros</h2>
                 <div class="catalogo">
                     <div class="catalogo_superior">
                         <div class="informacion_contacto">
                             
                             <table class="table">
                                 <tr>
-                                    <th>    Nombre  </th>
-                                    <th>Apellido</th>
-                                    <th>Rubro</th>
-                                    <th>Teléfono</th>
-                                    <th>Correo electronico</th>
-                                    <th>Horario</th>       
+                                    <th class="fila_profesionales color_letra">Nombre</th>
+                                    <th class="fila_profesionales color_letra">Apellido</th>
+                                    <th class="fila_profesionales color_letra">Edad</th>
+                                    <th class="fila_profesionales color_letra">Email</th>
+                                          
                                 </tr>
                             
-                                {% for p in peluquero %}
+                                {% for p in personas %}
+                                    {% for u in usuario %}
+                                        {% if u.id == p.id_usuario_p_id %}
+                                            <tr>
+                                                <td class="fila_profesionales color_letra">{{ u.first_name}}</td>
+                                                <td class="fila_profesionales color_letra">{{ u.last_name}}</td>
+                                                <td class="fila_profesionales color_letra">{{ p.edad}}</td>
+                                                <td class="fila_profesionales color_letra">{{ u.email}}</td>
+                                            </tr>
+                                        {% endif %}
                             
-                                <tr>
-                                    <td class="fila_profesionales">{{ p.nombre }}</td>
-                                    <td class="fila_profesionales">{{ p.apellido }}</td>
-                                    <td class="fila_profesionales">{{ p.rubro }}</td>
-                                    <td class="fila_profesionales">{{ p.telefono }}</td>
-                                    <td class="fila_profesionales">{{ p.email }}</td>
-                                    <td class="fila_profesionales">{{ p.horario }}</td>
-                                    
-                                </tr>
-                                
-                            
-                            
+                                    {% endfor %}            
                                 {% endfor %}
                             
                             
@@ -86,7 +41,7 @@
                             
                             <hr/>
                             
-                            <a href="/prueba"><input type="button" value="volver" class="btn btn-info"></a>
+                            <a href="/"><input type="button" value="volver" class="btn btn-info"></a>
 
 
                             </div>
@@ -98,30 +53,4 @@
 
     </main>
 
-
-
-
-    <footer class = "pie_pagina ">
-       
-        <div class= "contenedor_inferior Barra_contenedor">
-
-            <h2 class="encabezado-footer">Visita nuestras redes sociales</h2>
-
-            <div>
-                <a target="_blank" href="">Instagram</a>    
-            </div>
-
-            <div>
-
-                <a target="_blank" href="">Facebook</a>
-            </div>
-            <div>
-
-                <a target="_blank" href="">Whatsapp</a>
-            </div>
-        </div>        
-        
-    </footer>
-
-</body>
-</html>
+    {% endblock %}

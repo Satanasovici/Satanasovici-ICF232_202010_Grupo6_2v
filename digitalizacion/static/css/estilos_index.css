@@ -8,6 +8,11 @@ img{
 
 }
 
+
+.espacio_abajo{
+    padding: 15rem;
+}
+
 .boton{
     background-color: gray;
     color: white;
@@ -42,15 +47,14 @@ img{
 /* ESTRUCTURA Del Footer */
 
 .pie_pagina {
-    background-color: blanchedalmond;
-    background: url(../imagenes/Imagen_footer.jpg);
-    background-position: center center;
-    background-size: cover;
+    background-color: black;
+
+    padding:7rem;
+
     -webkit-filter: brightness(50%);
     filter: brightness(50%);
     border-style: solid;
-    border-color: blanchedalmond;
-    border-width: 3px;
+
 
 }
 
@@ -229,15 +233,18 @@ body{
 
 
 .informacion_contacto{
-    color: white;
+
+    border-radius: 20px;
+    color: wheat;
     padding: 4rem;
-    background-color: black;
-    border-style: solid;
-    border-color: white;
+    background-color: rgb(43, 42, 42);
+    border: groove;
+    border-color: blanchedalmond;
 }
 
 .fila_profesionales{
-    padding-top: 2rem;
+    padding-top: 4rem;
+    padding-left: 3rem;
 }
 
 
@@ -304,3 +311,33 @@ padding-bottom: 25rem;
     color:rgb(175, 175, 175);
     text-align: center;
 }
+
+
+.box{
+    color: white;
+    width: 95%;
+    
+ 
+  
+
+    text-align: left;
+    margin:  0 auto;
+
+}
+
+.box form{
+    width: 40%;
+}
+
+.box form input{
+    text-align: right;
+}
+
+
+.success{
+    list-style: none;
+    background-color: #677079;
+    color: white;
+    box-shadow: 12px 12px 12px #000000;
+    text-align: center;
+    }

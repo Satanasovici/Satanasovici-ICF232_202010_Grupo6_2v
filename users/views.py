@@ -1,12 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as do_login
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth import logout as do_logout
+import random
+from django.contrib.auth.models import Group
+from django import http
 from .forms import UserDeleteForm
+from peluqueria.models import cliente
 from django.contrib import messages
-from .forms import CustomUserForm, EditProfileForm
+from django.contrib.auth.models import User
+from .forms import CustomUserForm, EditProfileForm, CustomClienteForm
 
 def welcome(request):
     return render(request, "welcome.html")
@@ -14,17 +19,35 @@ def welcome(request):
 
 def register(request):
     form = CustomUserForm()
+    Usuario = request.user.id
     if request.method == "POST":
         form = CustomUserForm(data=request.POST)
+        numero = random.randint(111111111,220000000)
+        numero2 = random.randint(18,60)
         if form.is_valid():
-
             user = form.save()
-
             if user is not None:
                 do_login(request, user)
-                return redirect('/prueba')
+                user.can_view_cliente = True
+                cliente.objects.create(
+                    id_usuario_c = User.objects.get(pk = request.user.id),
+                    edad = numero2,
+                    rut_cliente = numero
+                )
+                group = Group.objects.get(name='cliente')
+                user.groups.add(group)
+
+                return redirect('/')
 
     return render(request, "register.html", {'form': form})
+
+
+
+
+
+
+
+
 
 
 
@@ -73,7 +96,7 @@ def deleteuser(request):
         user = request.user
         user.delete()
         messages.info(request, 'Tu cuenta ha sido borrada.')
-        return redirect('/prueba')
+        return redirect('/')
     else:
         delete_form = UserDeleteForm(instance=request.user)
 
@@ -92,7 +115,7 @@ def editProfile(request):
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             user = form.save()
-            return redirect('/prueba')
+            return redirect('/')
     else:
         form = EditProfileForm(instance=request.user)
         return render(request, "Editar_Perfil.html", {'form': form})
@@ -104,7 +127,7 @@ def changePassword(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return redirect('/prueba')
+            return redirect('/')
         else:
             return redirect('/password')
     else:
@@ -138,7 +161,7 @@ def login(request):
                 
                 do_login(request, user)
                
-                return redirect('/prueba')
+                return redirect('/')
    
         # Si llegamos al final renderizamos el formulario
     return render(request, "pagina_iniciar_sesion.html", {'form': form})
@@ -147,4 +170,4 @@ def login(request):
 
 def logout(request):
     do_logout(request)
-    return redirect('/prueba')
+    return redirect('/')
